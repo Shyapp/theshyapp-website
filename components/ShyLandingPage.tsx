@@ -153,7 +153,11 @@ export default function ShyLandingPage() {
 
   React.useEffect(() => {
     const handleMouseMove = (e: globalThis.MouseEvent) => {
-      setMousePosition({x: e.clientX, y: e.clientY});
+      // Smooth interpolation for drag effect
+      setMousePosition(prev => ({
+        x: prev.x + (e.clientX - prev.x) * 0.15,
+        y: prev.y + (e.clientY - prev.y) * 0.15,
+      }));
       setIsMouseMoving(true);
       
       if (mouseMoveTimeoutRef.current) {
@@ -166,8 +170,17 @@ export default function ShyLandingPage() {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    
+    // Request animation frame for smooth updates
+    let animationId: number;
+    const updatePosition = () => {
+      animationId = requestAnimationFrame(updatePosition);
+    };
+    updatePosition();
+    
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationId);
       if (mouseMoveTimeoutRef.current) {
         clearTimeout(mouseMoveTimeoutRef.current);
       }
@@ -273,7 +286,7 @@ export default function ShyLandingPage() {
         <div 
           className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center transition-opacity duration-1000" 
           style={{
-            opacity: isMouseMoving ? 0.5 : 0.65
+            opacity: 0.5
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
@@ -287,11 +300,12 @@ export default function ShyLandingPage() {
           }}
         />
         
-        {/* Subtle mouse-following glow */}
+        {/* Wider mouse-following glow with drag trail */}
         <div 
-          className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${isMouseMoving ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${isMouseMoving ? 'opacity-100' : 'opacity-0'}`}
           style={{
-            background: `radial-gradient(1200px 1200px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.08) 0%, transparent 60%)`,
+            background: `radial-gradient(ellipse 1800px 1400px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.12) 0%, rgba(251,191,36,0.05) 40%, transparent 70%)`,
+            transition: 'background 0.3s ease-out',
           }}
         />
       </div>
