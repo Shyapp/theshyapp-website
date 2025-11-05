@@ -740,7 +740,7 @@ function StoreBadge({
       aria-label="Get it on Google Play"
       className="inline-block transition-opacity hover:opacity-80">
       <img 
-        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
         alt="Get it on Google Play" 
         className="h-[50px] w-[168px] object-contain"
       />
