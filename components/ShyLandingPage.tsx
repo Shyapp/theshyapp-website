@@ -284,16 +284,16 @@ export default function ShyLandingPage() {
       {/* Global animated background */}
       <div className="fixed inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center transition-opacity duration-1000" 
+          className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center" 
           style={{
-            opacity: 0.5
+            opacity: 0.35
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         
         {/* Wide gradient glow - auto gliding when stationary */}
         <div 
-          className={`absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/10 to-transparent transition-opacity duration-500 ${isMouseMoving ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/5 to-transparent transition-all duration-1000 ease-in-out ${isMouseMoving ? 'opacity-0' : 'opacity-100'}`}
           style={{
             backgroundSize: '200% 100%',
             animation: 'slide-auto 16s ease-in-out infinite',
@@ -302,9 +302,9 @@ export default function ShyLandingPage() {
         
         {/* Wider mouse-following glow with drag trail */}
         <div 
-          className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${isMouseMoving ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${isMouseMoving ? 'opacity-100' : 'opacity-0'}`}
           style={{
-            background: `radial-gradient(ellipse 1800px 1400px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.12) 0%, rgba(251,191,36,0.05) 40%, transparent 70%)`,
+            background: `radial-gradient(ellipse 1800px 1400px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.06) 0%, rgba(251,191,36,0.025) 40%, transparent 70%)`,
             transition: 'background 0.3s ease-out',
           }}
         />
