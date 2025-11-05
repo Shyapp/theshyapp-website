@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --shy-yellow: #fbbf24;
+  --shy-yellow-bright: #fcd34d;
+  --shy-dark: #0B0E13;
+  --shy-dark-secondary: #111827;
+}
+
+body {
+  font-family: "Roboto", system-ui, -apple-system, 'Segoe UI', Helvetica, Arial,
+    'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+.store-badge {
+  font-feature-settings: 'kern' on;
+}
+
+.backdrop-animation {
+  animation: backdrop-glow 15s ease-in-out infinite;
+}
+
+@keyframes backdrop-glow {
+  0%, 100% { 
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.1;
+  }
+  25% { 
+    transform: scale(1.1) translate(-5px, 10px);
+    opacity: 0.15;
+  }
+  50% { 
+    transform: scale(1.05) translate(8px, -8px);
+    opacity: 0.2;
+  }
+  75% { 
+    transform: scale(1.08) translate(-3px, -5px);
+    opacity: 0.12;
+  }
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-yellow-300 hover:scale-105 active:scale-95;
+}
+
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:border-white/20;
+}
+
+/* Store badge enhancements */
+#btn-appstore:hover,
+#btn-googleplay:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.25);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--shy-yellow);
+  outline-offset: 2px;
+}
+
+/* Text selection */
+::selection {
+  background-color: var(--shy-yellow);
+  color: var(--shy-dark);
+}
+
+/* Particle Color Morph Animation */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--shy-yellow);
+  animation: particleFloat 20s infinite linear;
+  opacity: 0;
+}
+
+.particle:nth-child(1) { animation-delay: 0s; left: 10%; }
+.particle:nth-child(2) { animation-delay: 2s; left: 20%; }
+.particle:nth-child(3) { animation-delay: 4s; left: 30%; }
+.particle:nth-child(4) { animation-delay: 6s; left: 40%; }
+.particle:nth-child(5) { animation-delay: 8s; left: 50%; }
+.particle:nth-child(6) { animation-delay: 10s; left: 60%; }
+.particle:nth-child(7) { animation-delay: 12s; left: 70%; }
+.particle:nth-child(8) { animation-delay: 14s; left: 80%; }
+.particle:nth-child(9) { animation-delay: 16s; left: 90%; }
+.particle:nth-child(10) { animation-delay: 18s; left: 15%; }
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+    background: var(--shy-yellow);
+    box-shadow: 0 0 6px var(--shy-yellow);
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    background: #ec4899;
+    box-shadow: 0 0 12px #ec4899;
+    transform: translateY(75vh) rotate(90deg);
+  }
+  50% {
+    background: #8b5cf6;
+    box-shadow: 0 0 15px #8b5cf6;
+    transform: translateY(50vh) rotate(180deg);
+  }
+  75% {
+    background: #06b6d4;
+    box-shadow: 0 0 12px #06b6d4;
+    transform: translateY(25vh) rotate(270deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+    background: var(--shy-yellow);
+    box-shadow: 0 0 6px var(--shy-yellow);
+  }
+}
