@@ -265,7 +265,7 @@ export default function ShyLandingPage() {
       deepLink: 'shy://location/e93720fe-ecd1-4bc3-8025-ca456c7a67e9',
       fallbackHref: '/download',
       image: '/images/locations/city-park.jpg',
-      alt: 'People relaxing within the City Park Shy geofence',
+      alt: 'People relaxing at City Park Shy Location',
     },
     {
       id: 'book-nook',
@@ -360,7 +360,7 @@ export default function ShyLandingPage() {
               </span>
             </h1>
             <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl font-light text-white/75 leading-relaxed">
-              Discover people within 50 meters at verified Shy Locations. Send a chat request for 1 token. 
+              Discover people at verified Shy Locations near you. Send a chat request for 1 token. 
               Once accepted, your connection is permanent — rename contacts, message anytime, build lasting relationships.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -400,7 +400,7 @@ export default function ShyLandingPage() {
       <section className="relative z-10 py-24 border-y border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <StatCard number="50 m" label="Discovery range at locations" />
+            <StatCard number="Real" label="People at your location" />
             <StatCard number="1 token" label="To start a conversation" />
             <StatCard number="0 leaks" label="Personal data shared" />
             <StatCard number="45+" label="Cities with Shy Locations" />
@@ -425,7 +425,7 @@ export default function ShyLandingPage() {
             <FeatureCard
               icon={<MapIcon />}
               title="Verified Shy Locations"
-              description="Only see people within 50 meters at the same location as you. No fake profiles, no catfishing — just real people, right now."
+              description="Only see people at the same location as you, right now. No fake profiles, no catfishing — just real people you can actually meet."
             />
             <FeatureCard
               icon={<ChatIcon />}
@@ -466,8 +466,8 @@ export default function ShyLandingPage() {
               Explore active Shy Locations
             </h2>
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Every lobby is geofenced to 50 meters. Discover people at your location, 
-              send a connection request — and build relationships that last beyond the moment.
+              Each Shy Location is a real place where you can meet real people. 
+              Send a connection request — and build relationships that last beyond the moment.
             </p>
           </div>
           <FeaturedLocationsCarousel items={featuredLocations} />

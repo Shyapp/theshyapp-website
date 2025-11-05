@@ -30,7 +30,7 @@ export default function ShyHero() {
             Meet the people already here.
           </h1>
           <p className="mt-4 text-lg text-zinc-200 md:text-xl">
-            Every Shy lobby stays within a verified 50 m radius.
+            Connect with real people at verified Shy Locations near you.
           </p>
 
           {/* Featured pill */}

@@ -4,14 +4,14 @@ import './globals.css';
 import {Analytics} from '@/components/Analytics';
 
 export const metadata: Metadata = {
-  title: 'Shy App - Meet people within 50 meters',
+  title: 'Shy App - Meet people nearby. Keep the connections that matter.',
   description:
-    'Verified lobbies, token-backed chat requests, and cross-platform sync for Shy Locations.',
+    'Connect with real people at verified Shy Locations. Send chat requests, build lasting relationships.',
   metadataBase: new URL('https://web-oisjx0yop-shy-app.vercel.app'),
   openGraph: {
-    title: 'Shy App - Meet people within 50 meters',
+    title: 'Shy App - Meet people nearby. Keep the connections that matter.',
     description:
-      'Verified lobbies, token-backed chat requests, and cross-platform sync for Shy Locations.',
+      'Connect with real people at verified Shy Locations. Send chat requests, build lasting relationships.',
     url: 'https://web-oisjx0yop-shy-app.vercel.app',
     siteName: 'Shy App',
     images: [
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
         url: '/og-shy.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shy App lobby map glowing over a dark background',
+        alt: 'Shy App - Connect with people nearby',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shy App - Meet people within 50 meters',
+    title: 'Shy App - Meet people nearby. Keep the connections that matter.',
     description:
-      'Verified lobbies, token-backed chat requests, and cross-platform sync for Shy Locations.',
+      'Connect with real people at verified Shy Locations. Send chat requests, build lasting relationships.',
     images: ['/og-shy.jpg'],
   },
   icons: {
