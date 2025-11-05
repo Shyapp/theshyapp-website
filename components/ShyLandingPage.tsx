@@ -240,7 +240,7 @@ export default function ShyLandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0B0E13] text-white antialiased">
+    <div className="min-h-screen bg-black text-white antialiased">
       {/* Particle Color Morph Animation */}
       <div className="particles-container">
         {Array.from({length: 10}, (_, i) => (
@@ -248,7 +248,7 @@ export default function ShyLandingPage() {
         ))}
       </div>
 
-      <header className="relative z-20 backdrop-blur-md bg-[#0B0E13]/80 sticky top-0 border-b border-white/5">
+      <header className="relative z-20 backdrop-blur-md bg-black/80 sticky top-0 border-b border-white/5">
         <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4">
           <ShyWordmark />
           <div className="hidden items-center gap-8 md:flex text-sm font-medium text-white/80">
@@ -285,7 +285,7 @@ export default function ShyLandingPage() {
       <section className="relative z-20 overflow-hidden" id="product">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0E13]/90 via-[#0B0E13]/85 to-[#0B0E13]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black" />
         </div>
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-24 pt-16 md:grid-cols-1 md:pt-20">
           <div className="max-w-3xl">

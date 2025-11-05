@@ -5,8 +5,8 @@
 :root {
   --shy-yellow: #fbbf24;
   --shy-yellow-bright: #fcd34d;
-  --shy-dark: #0B0E13;
-  --shy-dark-secondary: #111827;
+  --shy-dark: #000000;
+  --shy-dark-secondary: #0a0a0a;
 }
 
 body {
