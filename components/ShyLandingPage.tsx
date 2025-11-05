@@ -742,7 +742,7 @@ function StoreBadge({
       <img 
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" 
         alt="Get it on Google Play" 
-        className="h-[60px] w-[168px] object-cover"
+        className="h-[70px] w-[168px] object-cover"
       />
     </a>
   );
