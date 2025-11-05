@@ -388,9 +388,9 @@ export default function ShyLandingPage() {
               </div>
             </div>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60">
-              <span>Live presence, Supabase backed.</span>
-              <span>Cross-platform token sync.</span>
-              <span>Privacy-first by design.</span>
+              <span>See who's nearby in real-time</span>
+              <span>Works on phone and web</span>
+              <span>Your privacy is protected</span>
             </div>
           </div>
         </div>
@@ -400,8 +400,8 @@ export default function ShyLandingPage() {
       <section className="relative z-10 py-24 border-y border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <StatCard number="50 m" label="Verified radius per lobby" />
-            <StatCard number="1 token" label="Required for chat invites" />
+            <StatCard number="50 m" label="Discovery range at locations" />
+            <StatCard number="1 token" label="To start a conversation" />
             <StatCard number="0 leaks" label="Personal data shared" />
             <StatCard number="45+" label="Cities with Shy Locations" />
           </div>
@@ -425,7 +425,7 @@ export default function ShyLandingPage() {
             <FeatureCard
               icon={<MapIcon />}
               title="Verified Shy Locations"
-              description="Supabase policies enforce our 50 m radius so only people physically inside the same Shy Location appear in your lobby feed."
+              description="Only see people within 50 meters at the same location as you. No fake profiles, no catfishing — just real people, right now."
             />
             <FeatureCard
               icon={<ChatIcon />}
@@ -439,13 +439,13 @@ export default function ShyLandingPage() {
             />
             <FeatureCard
               icon={<GlobeIcon />}
-              title="Cross-platform parity"
-              description="Mobile, web, and admin pull from the same Supabase tables - profiles, tokens, and map glow stay synchronized."
+              title="Works everywhere"
+              description="Use Shy on your phone, computer, or tablet. Your connections and conversations stay in sync across all your devices."
             />
             <FeatureCard
               icon={<BellIcon />}
-              title="Realtime enter + leave"
-              description="Presence updates fire instantly when someone joins or leaves your location so you never miss a moment."
+              title="See who's here, right now"
+              description="Get instant updates when someone new arrives at your location. Never miss the chance to connect with someone interesting nearby."
             />
             <FeatureCard
               icon={<StarIcon />}
@@ -483,11 +483,10 @@ export default function ShyLandingPage() {
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Token System</h2>
               <p className="max-w-2xl text-lg text-white/70 font-normal leading-relaxed">
-                TokenManager and our Supabase functions sync deductions across
-                every platform. Free members receive{' '}
-                <span className="font-semibold text-white">10 Shy tokens</span>{' '}
-                each month for new chats; the unlimited tier removes the cap
-                entirely.
+                Free members get{' '}
+                <span className="font-semibold text-white">10 tokens</span>{' '}
+                every month to start new conversations. Upgrade to premium
+                for unlimited connections and priority support.
               </p>
             </div>
             <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2">
@@ -534,9 +533,9 @@ export default function ShyLandingPage() {
                 Security
               </h3>
               <p className="mt-4 max-w-2xl text-lg text-white/70 leading-relaxed">
-                Enjoy end-to-end encryption to keep your chats secure. We pair
-                industry best practices with ephemeral lobby conversations that
-                vanish when the group closes.
+                Your conversations are protected with end-to-end encryption. 
+                Only you and the person you're chatting with can read your messages — 
+                we can't see them, and neither can anyone else.
               </p>
             </div>
             <div className="flex items-center justify-end">
@@ -568,22 +567,22 @@ export default function ShyLandingPage() {
             <dl className="space-y-8 text-base text-white/70">
               <div>
                 <dt className="font-semibold text-white text-lg">
-                  How do Shy tokens work?
+                  How do tokens work?
                 </dt>
                 <dd className="mt-3 leading-relaxed">
-                  Every new chat request costs 1 token (or unlimited with premium). 
-                  Once someone accepts your request, that connection is permanent — 
-                  you can message them anytime, even after leaving the location.
+                  You get 10 free tokens every month. Each new connection request costs 1 token. 
+                  Once someone accepts, that connection is permanent — you can message them 
+                  anytime for free. Upgrade to premium for unlimited connection requests.
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-white text-lg">
-                  What defines a Shy Location?
+                  What is a Shy Location?
                 </dt>
                 <dd className="mt-3 leading-relaxed">
-                  Locations are geofenced to 50 meters. You can only discover and 
-                  send connection requests to people at your current location. Once 
-                  connected, your chats persist wherever you are.
+                  Shy Locations are real places like coffee shops, libraries, or gyms. 
+                  When you're at one, you can see and connect with other people there. 
+                  Think of it as meeting someone in person, but your phone helps break the ice.
                 </dd>
               </div>
               <div>
@@ -608,12 +607,11 @@ export default function ShyLandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-10 md:p-14">
             <h3 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Need help launching a new location?
+              Want to add your venue as a Shy Location?
             </h3>
             <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
-              Our team can provision Shy Locations, seed lobbies, and monitor
-              token usage for special events. Drop us a line and we&rsquo;ll
-              coordinate access within one business day.
+              Coffee shops, libraries, gyms, and coworking spaces make great Shy Locations. 
+              We'll help you set everything up and bring new foot traffic to your business.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="mailto:hello@shyapp.com" className="btn">
