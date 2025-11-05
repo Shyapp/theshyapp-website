@@ -50,6 +50,15 @@ body {
   }
 }
 
+@keyframes slide-auto {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 @keyframes slide-slow {
   0%, 100% {
     transform: translate(-50%, -50%) translateX(-30vw);

@@ -277,15 +277,21 @@ export default function ShyLandingPage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
-        {/* Mouse-following glow or auto-gliding animation */}
+        
+        {/* Wide gradient glow - auto gliding when stationary */}
         <div 
-          className="absolute w-[800px] h-[800px] rounded-full blur-3xl transition-all duration-500"
+          className={`absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/10 to-transparent transition-opacity duration-500 ${isMouseMoving ? 'opacity-0' : 'opacity-100'}`}
           style={{
-            background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)',
-            left: isMouseMoving ? `${mousePosition.x}px` : '50%',
-            top: isMouseMoving ? `${mousePosition.y}px` : '50%',
-            transform: 'translate(-50%, -50%)',
-            animation: isMouseMoving ? 'none' : 'slide-slow 16s ease-in-out infinite',
+            backgroundSize: '200% 100%',
+            animation: 'slide-auto 16s ease-in-out infinite',
+          }}
+        />
+        
+        {/* Subtle mouse-following glow */}
+        <div 
+          className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${isMouseMoving ? 'opacity-100' : 'opacity-0'}`}
+          style={{
+            background: `radial-gradient(1200px 1200px at ${mousePosition.x}px ${mousePosition.y}px, rgba(251,191,36,0.08) 0%, transparent 60%)`,
           }}
         />
       </div>
