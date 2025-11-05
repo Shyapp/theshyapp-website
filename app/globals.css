@@ -50,6 +50,15 @@ body {
   }
 }
 
+@keyframes slide-slow {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateX(-30vw);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateX(30vw);
+  }
+}
+
 .btn {
   @apply inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-black transition-all hover:bg-yellow-300 hover:scale-105 active:scale-95;
 }

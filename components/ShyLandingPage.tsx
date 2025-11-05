@@ -147,6 +147,33 @@ function StarIcon() {
 }
 
 export default function ShyLandingPage() {
+  const [mousePosition, setMousePosition] = React.useState({x: 0, y: 0});
+  const [isMouseMoving, setIsMouseMoving] = React.useState(false);
+  const mouseMoveTimeoutRef = React.useRef<NodeJS.Timeout>();
+
+  React.useEffect(() => {
+    const handleMouseMove = (e: globalThis.MouseEvent) => {
+      setMousePosition({x: e.clientX, y: e.clientY});
+      setIsMouseMoving(true);
+      
+      if (mouseMoveTimeoutRef.current) {
+        clearTimeout(mouseMoveTimeoutRef.current);
+      }
+      
+      mouseMoveTimeoutRef.current = setTimeout(() => {
+        setIsMouseMoving(false);
+      }, 1000);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (mouseMoveTimeoutRef.current) {
+        clearTimeout(mouseMoveTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const trackStoreClick = (platform: 'ios' | 'android') => {
     try {
       const g = (window as any).gtag as undefined | ((...args: any[]) => void);
@@ -243,12 +270,24 @@ export default function ShyLandingPage() {
     <div className="min-h-screen bg-black text-white antialiased relative">
       {/* Global animated background */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-60" />
+        <div 
+          className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center transition-opacity duration-1000" 
+          style={{
+            opacity: isMouseMoving ? 0.5 : 0.65
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
-        {/* Gliding light animation */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/10 to-transparent animate-[slide_8s_ease-in-out_infinite]" style={{
-          backgroundSize: '200% 100%',
-        }} />
+        {/* Mouse-following glow or auto-gliding animation */}
+        <div 
+          className="absolute w-[800px] h-[800px] rounded-full blur-3xl transition-all duration-500"
+          style={{
+            background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)',
+            left: isMouseMoving ? `${mousePosition.x}px` : '50%',
+            top: isMouseMoving ? `${mousePosition.y}px` : '50%',
+            transform: 'translate(-50%, -50%)',
+            animation: isMouseMoving ? 'none' : 'slide-slow 16s ease-in-out infinite',
+          }}
+        />
       </div>
       {/* Particle Color Morph Animation */}
       <div className="particles-container z-[1]">
