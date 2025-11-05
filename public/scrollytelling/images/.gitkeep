@@ -1,0 +1,12 @@
+# Scrollytelling Images
+
+Place your parallax layer images here.
+
+## Example Structure:
+- scene-01-background.png
+- scene-01-midground.png
+- scene-01-foreground.png
+- scene-02-background.png
+- etc.
+
+See parent README.md for optimization guidelines.
