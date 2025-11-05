@@ -351,19 +351,19 @@ export default function ShyLandingPage() {
 
       {/* HERO */}
       <section className="relative z-10 overflow-hidden" id="product">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-24 pt-16 md:grid-cols-1 md:pt-20">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-32 pt-24 md:pb-40 md:pt-32">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
               <span className="block">Connect with people nearby.</span>
-              <span className="block text-yellow-300">
+              <span className="block text-yellow-300 mt-2">
                 Real interactions. Real locations.
               </span>
             </h1>
-            <p className="mt-5 max-w-2xl text-base font-light text-white/75">
+            <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl font-light text-white/75 leading-relaxed">
               Discover and chat with people within 50 meters at verified Shy Locations.
               Privacy-first design with intentional connections — no endless swiping, just real moments.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href="shy://location/e8a88b99-6f07-411f-b402-95bb4f0ca7f1"
                 onClick={event =>
@@ -387,7 +387,7 @@ export default function ShyLandingPage() {
                 />
               </div>
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/60">
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60">
               <span>Live presence, Supabase backed.</span>
               <span>Cross-platform token sync.</span>
               <span>Privacy-first by design.</span>
@@ -397,7 +397,7 @@ export default function ShyLandingPage() {
       </section>
 
       {/* STATS / SOCIAL PROOF */}
-      <section className="relative z-10 py-20 border-y border-white/5">
+      <section className="relative z-10 py-24 border-y border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <StatCard number="50 m" label="Verified radius per lobby" />
@@ -409,19 +409,19 @@ export default function ShyLandingPage() {
       </section>
 
       {/* FEATURES SHOWCASE */}
-      <section className="relative z-10 py-32" id="features">
+      <section className="relative z-10 py-32 md:py-40" id="features">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Features that <span className="text-yellow-300">empower you</span>
             </h2>
-            <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
               Everything you need to connect authentically while maintaining
               your privacy
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FeatureCard
               icon={<MapIcon />}
               title="Verified Shy Locations"
@@ -458,14 +458,14 @@ export default function ShyLandingPage() {
 
       {/* LOCATIONS */}
       <section
-        className="relative z-10 py-32 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent"
+        className="relative z-10 py-32 md:py-40 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent"
         id="locations">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Explore active Shy Locations
             </h2>
-            <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
               Every lobby is geofenced to 50 meters. Open the app to step into
               the rooms closest to you.
             </p>
@@ -476,13 +476,13 @@ export default function ShyLandingPage() {
 
       {/* TOKEN SYSTEM */}
       <section
-        className="relative z-10 py-20 border-t border-white/10"
+        className="relative z-10 py-24 md:py-32 border-t border-white/10"
         id="pricing">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold">Token System</h2>
-              <p className="max-w-2xl text-white/70 font-normal">
+              <h2 className="text-3xl md:text-4xl font-bold">Token System</h2>
+              <p className="max-w-2xl text-lg text-white/70 font-normal leading-relaxed">
                 TokenManager and our Supabase functions sync deductions across
                 every platform. Free members receive{' '}
                 <span className="font-semibold text-white">10 Shy tokens</span>{' '}
@@ -523,25 +523,25 @@ export default function ShyLandingPage() {
       </section>
 
       {/* SECURITY */}
-      <section className="relative z-10 px-6 py-16" id="security">
+      <section className="relative z-10 px-6 py-24 md:py-32" id="security">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 rounded-2xl border border-white/10 bg-white/5 p-10 md:p-12 md:grid-cols-3">
             <div className="md:col-span-2">
-              <h3 className="flex items-center gap-3 text-2xl font-semibold">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400/15 text-yellow-300 ring-1 ring-inset ring-yellow-400/30">
+              <h3 className="flex items-center gap-3 text-2xl md:text-3xl font-semibold">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400/15 text-yellow-300 ring-1 ring-inset ring-yellow-400/30">
                   <LockIcon />
                 </span>
                 Security
               </h3>
-              <p className="mt-3 max-w-2xl text-white/70">
+              <p className="mt-4 max-w-2xl text-lg text-white/70 leading-relaxed">
                 Enjoy end-to-end encryption to keep your chats secure. We pair
                 industry best practices with ephemeral lobby conversations that
                 vanish when the group closes.
               </p>
             </div>
             <div className="flex items-center justify-end">
-              <div className="relative h-28 w-28 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-yellow-300/5 ring-1 ring-yellow-400/30">
-                <div className="absolute inset-0 m-auto h-12 w-12 text-yellow-300 opacity-90">
+              <div className="relative h-32 w-32 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-yellow-300/5 ring-1 ring-yellow-400/30">
+                <div className="absolute inset-0 m-auto h-14 w-14 text-yellow-300 opacity-90">
                   <LockIcon />
                 </div>
               </div>
@@ -552,25 +552,25 @@ export default function ShyLandingPage() {
 
       {/* FAQ */}
       <section
-        className="relative z-10 border-t border-white/10 py-16"
+        className="relative z-10 border-t border-white/10 py-24 md:py-32"
         id="faqs">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 md:grid-cols-2">
+          <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h3 className="text-3xl font-bold tracking-tight">
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight">
                 Frequently asked questions
               </h3>
-              <p className="mt-3 text-sm text-white/60">
+              <p className="mt-4 text-base text-white/60">
                 The essentials on tokens, locations, and privacy so your team
                 can launch with confidence.
               </p>
             </div>
-            <dl className="space-y-6 text-sm text-white/70">
+            <dl className="space-y-8 text-base text-white/70">
               <div>
-                <dt className="font-semibold text-white">
+                <dt className="font-semibold text-white text-lg">
                   How do Shy tokens work?
                 </dt>
-                <dd className="mt-2">
+                <dd className="mt-3 leading-relaxed">
                   Every new chat request costs a single token unless your
                   account holds the unlimited tier. Deductions run through
                   TokenManager and the same Supabase functions used in
@@ -578,10 +578,10 @@ export default function ShyLandingPage() {
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-white">
+                <dt className="font-semibold text-white text-lg">
                   What defines a Shy Location?
                 </dt>
-                <dd className="mt-2">
+                <dd className="mt-3 leading-relaxed">
                   Locations are geofenced to 50 meters. Users are only listed in
                   the lobby if Supabase confirms their device is inside that
                   radius via{' '}
@@ -592,10 +592,10 @@ export default function ShyLandingPage() {
                 </dd>
               </div>
               <div>
-                <dt className="font-semibold text-white">
+                <dt className="font-semibold text-white text-lg">
                   Can people see my identity?
                 </dt>
-                <dd className="mt-2">
+                <dd className="mt-3 leading-relaxed">
                   No. Profiles only surface the fields you share. Private chats
                   are encrypted and lobbies disappear as soon as the group
                   closes.
@@ -608,19 +608,19 @@ export default function ShyLandingPage() {
 
       {/* CONTACT */}
       <section
-        className="relative z-10 border-t border-white/10 py-16"
+        className="relative z-10 border-t border-white/10 py-24 md:py-32"
         id="contact">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12">
-            <h3 className="text-3xl font-bold tracking-tight">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-10 md:p-14">
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">
               Need help launching a new location?
             </h3>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
               Our team can provision Shy Locations, seed lobbies, and monitor
               token usage for special events. Drop us a line and we&rsquo;ll
               coordinate access within one business day.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a href="mailto:hello@shyapp.com" className="btn">
                 Email support
               </a>
@@ -637,16 +637,16 @@ export default function ShyLandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative z-10 border-t border-white/10 px-6 py-16">
+      <footer className="relative z-10 border-t border-white/10 px-6 py-20 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-            <div className="space-y-3">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+            <div className="space-y-4">
               <ShyWordmark />
               <p className="text-sm text-white/60">
                 &copy; {new Date().getFullYear()} Shy Inc. All rights reserved.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6 text-sm font-normal text-white/70 md:col-span-2 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 text-sm font-normal text-white/70 md:col-span-2 md:grid-cols-4">
               <FooterCol
                 title="Home"
                 links={['Security', 'Features', 'FAQs']}
