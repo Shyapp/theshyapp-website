@@ -354,15 +354,14 @@ export default function ShyLandingPage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-24 pt-16 md:grid-cols-1 md:pt-20">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-              <span className="block">Meet the people already here.</span>
+              <span className="block">Connect with people nearby.</span>
               <span className="block text-yellow-300">
-                Every lobby stays within 50 m.
+                Real interactions. Real locations.
               </span>
             </h1>
             <p className="mt-5 max-w-2xl text-base font-light text-white/75">
-              Shy verifies every visitor inside a Shy Location before they
-              appear in the lobby feed. Tokens keep chat requests intentional -
-              one token per invite unless you&apos;re on the unlimited tier.
+              Discover and chat with people within 50 meters at verified Shy Locations.
+              Privacy-first design with intentional connections — no endless swiping, just real moments.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
@@ -718,7 +717,7 @@ function StoreBadge({
       <a
         id="btn-appstore"
         onClick={onClick}
-        href="https://apps.apple.com/us/app/shy/id6444877711"
+        href="https://apps.apple.com/us/app/shy/id6444877711?itscg=30200&itsct=apps_box_link&mttnsubad=6444877711"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Download on the App Store"

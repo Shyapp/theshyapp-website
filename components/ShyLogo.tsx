@@ -20,9 +20,6 @@ export function ShyWordmark({className = ''}: {className?: string}) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <ShyLogo className="h-9 w-auto" />
-      <span className="text-2xl font-semibold tracking-tight text-white">
-        Shy App
-      </span>
     </div>
   );
 }
