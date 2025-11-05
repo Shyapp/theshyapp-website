@@ -376,7 +376,7 @@ export default function ShyLandingPage() {
                 className="btn">
                 Open Coffee Corner
               </a>
-              <div id="download" className="flex flex-wrap gap-3">
+              <div id="download" className="flex flex-wrap items-center gap-3">
                 <StoreBadge
                   type="apple"
                   onClick={() => trackStoreClick('ios')}
@@ -721,7 +721,7 @@ function StoreBadge({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Download on the App Store"
-        className="inline-block transition-transform hover:scale-105">
+        className="inline-block transition-opacity hover:opacity-80">
         <img 
           src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1672358400" 
           alt="Download on the App Store" 
@@ -738,11 +738,11 @@ function StoreBadge({
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Get it on Google Play"
-      className="inline-block transition-transform hover:scale-105">
+      className="inline-block transition-opacity hover:opacity-80">
       <img 
         src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
         alt="Get it on Google Play" 
-        className="h-[73px] w-auto"
+        className="h-[50px] w-auto"
       />
     </a>
   );

@@ -76,13 +76,6 @@ body {
   @apply rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:border-white/20;
 }
 
-/* Store badge enhancements */
-#btn-appstore:hover,
-#btn-googleplay:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.25);
-}
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
