@@ -607,15 +607,16 @@ export default function ShyLandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-10 md:p-14">
             <h3 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Want to add your venue as a Shy Location?
+              Don't have a Shy Location near you?
             </h3>
             <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
-              Coffee shops, libraries, gyms, and coworking spaces make great Shy Locations. 
-              We'll help you set everything up and bring new foot traffic to your business.
+              Submit a request for a new location in your area and we'll make it happen. 
+              Whether it's your favorite coffee shop, gym, or coworking space — we'll work 
+              with them to bring Shy to your neighborhood.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <a href="mailto:hello@shyapp.com" className="btn">
-                Email support
+              <a href="mailto:hello@shyapp.com?subject=Request%20New%20Shy%20Location" className="btn">
+                Submit location request
               </a>
               <a
                 href="https://web-oisjx0yop-shy-app.vercel.app"
@@ -655,9 +656,10 @@ export default function ShyLandingPage() {
               <div className="space-y-3">
                 <div className="font-semibold text-white">Follow</div>
                 <div className="flex items-center gap-3">
-                  <SocialIcon name="twitter" />
-                  <SocialIcon name="instagram" />
-                  <SocialIcon name="github" />
+                  <SocialIcon name="tiktok" href="https://www.tiktok.com/@shyapp" />
+                  <SocialIcon name="instagram" href="https://www.instagram.com/shyapp" />
+                  <SocialIcon name="facebook" href="https://www.facebook.com/shyapp" />
+                  <SocialIcon name="linkedin" href="https://www.linkedin.com/company/shyapp" />
                 </div>
               </div>
             </div>
@@ -758,19 +760,23 @@ function FooterCol({title, links}: {title: string; links: string[]}) {
   );
 }
 
-function SocialIcon({name}: {name: 'twitter' | 'instagram' | 'github'}) {
+function SocialIcon({name, href}: {name: 'tiktok' | 'instagram' | 'facebook' | 'linkedin'; href: string}) {
   const paths: Record<string, string> = {
-    twitter:
-      'M23 4.72c-.8.35-1.66.6-2.56.71a4.48 4.48 0 0 0 1.96-2.47 8.98 8.98 0 0 1-2.83 1.08A4.48 4.48 0 0 0 12.2 7.9c0 .35.04.7.12 1.02A12.73 12.73 0 0 1 3.15 3.6a4.47 4.47 0 0 0-.61 2.26 4.48 4.48 0 0 0 1.99 3.73a4.43 4.43 0 0 1-2.03-.56v.06c0 2.2 1.56 4.03 3.63 4.45-.38.1-.78.16-1.2.16-.29 0-.57-.03-.85-.08.57 1.79 2.25 3.1 4.24 3.14A8.98 8.98 0 0 1 2 19.54a12.66 12.66 0 0 0 6.86 2.01c8.24 0 12.75-6.83 12.75-12.75v-.58A9.1 9.1 0 0 0 23 4.72z',
+    tiktok:
+      'M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z',
     instagram:
       'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.51 5.51 0 0 0 12 7.5zm7.25-.75a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 19.25 6.75z',
-    github:
-      'M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.31 6.84 9.66.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.91-2.78.62-3.37-1.21-3.37-1.21-.45-1.17-1.1-1.48-1.1-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.35 1.12 2.93.86.09-.66.35-1.12.64-1.38-2.22-.26-4.56-1.15-4.56-5.12 0-1.13.38-2.05 1.02-2.78-.11-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.06a9.2 9.2 0 0 1 5 0c1.9-1.33 2.74-1.06 2.74-1.06.55 1.42.21 2.47.1 2.73.64.73 1.02 1.65 1.02 2.78 0 4-2.35 4.85-4.58 5.1.36.32.69.93.69 1.88 0 1.36-.01 2.46-.01 2.79 0 .27.18.6.69.49A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z',
+    facebook:
+      'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
+    linkedin:
+      'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
   };
   return (
     <a
-      href="#"
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-yellow-300">
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-yellow-300 hover:border-yellow-400/30 transition-colors">
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
         <path d={paths[name]} />
       </svg>
