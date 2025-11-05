@@ -240,7 +240,16 @@ export default function ShyLandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white antialiased">
+    <div className="min-h-screen bg-black text-white antialiased relative overflow-hidden">
+      {/* Global animated background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+        {/* Gliding light animation */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/10 to-transparent animate-[slide_8s_ease-in-out_infinite]" style={{
+          backgroundSize: '200% 100%',
+        }} />
+      </div>
       {/* Particle Color Morph Animation */}
       <div className="particles-container">
         {Array.from({length: 10}, (_, i) => (
@@ -283,10 +292,6 @@ export default function ShyLandingPage() {
 
       {/* HERO */}
       <section className="relative z-20 overflow-hidden" id="product">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black" />
-        </div>
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-24 pt-16 md:grid-cols-1 md:pt-20">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
