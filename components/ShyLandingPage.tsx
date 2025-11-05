@@ -725,7 +725,7 @@ function StoreBadge({
         <img 
           src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1672358400" 
           alt="Download on the App Store" 
-          className="h-[50px] w-auto"
+          className="h-[50px] w-[168px] object-contain"
         />
       </a>
     );
@@ -742,7 +742,7 @@ function StoreBadge({
       <img 
         src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
         alt="Get it on Google Play" 
-        className="h-[50px] w-auto"
+        className="h-[50px] w-[168px] object-contain"
       />
     </a>
   );
