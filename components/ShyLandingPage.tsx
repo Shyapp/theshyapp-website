@@ -354,14 +354,14 @@ export default function ShyLandingPage() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-32 pt-24 md:pb-40 md:pt-32">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
-              <span className="block">Connect with people nearby.</span>
+              <span className="block">Meet people nearby.</span>
               <span className="block text-yellow-300 mt-2">
-                Real interactions. Real locations.
+                Keep the connections that matter.
               </span>
             </h1>
             <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl font-light text-white/75 leading-relaxed">
-              Discover and chat with people within 50 meters at verified Shy Locations.
-              Privacy-first design with intentional connections — no endless swiping, just real moments.
+              Discover people within 50 meters at verified Shy Locations. Send a chat request for 1 token. 
+              Once accepted, your connection is permanent — rename contacts, message anytime, build lasting relationships.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
@@ -429,13 +429,13 @@ export default function ShyLandingPage() {
             />
             <FeatureCard
               icon={<ChatIcon />}
-              title="Lobby-first discovery"
-              description="Tokens and proximity keep introductions intentional - send a request when you're ready to talk, not before."
+              title="Intentional discovery, lasting connections"
+              description="Send a chat request for 1 token when you're at the same location. Once accepted, the connection is yours to keep — message anytime, rename contacts, build real relationships."
             />
             <FeatureCard
               icon={<ShieldIcon />}
-              title="Privacy native messaging"
-              description="One-to-one chats stay encrypted and tied to token usage so you always know who initiated and when."
+              title="Privacy-first messaging"
+              description="All chats are encrypted end-to-end. Your connections persist after you leave the location, giving you full control over ongoing conversations."
             />
             <FeatureCard
               icon={<GlobeIcon />}
@@ -466,8 +466,8 @@ export default function ShyLandingPage() {
               Explore active Shy Locations
             </h2>
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Every lobby is geofenced to 50 meters. Open the app to step into
-              the rooms closest to you.
+              Every lobby is geofenced to 50 meters. Discover people at your location, 
+              send a connection request — and build relationships that last beyond the moment.
             </p>
           </div>
           <FeaturedLocationsCarousel items={featuredLocations} />
@@ -571,10 +571,9 @@ export default function ShyLandingPage() {
                   How do Shy tokens work?
                 </dt>
                 <dd className="mt-3 leading-relaxed">
-                  Every new chat request costs a single token unless your
-                  account holds the unlimited tier. Deductions run through
-                  TokenManager and the same Supabase functions used in
-                  production.
+                  Every new chat request costs 1 token (or unlimited with premium). 
+                  Once someone accepts your request, that connection is permanent — 
+                  you can message them anytime, even after leaving the location.
                 </dd>
               </div>
               <div>
@@ -582,23 +581,19 @@ export default function ShyLandingPage() {
                   What defines a Shy Location?
                 </dt>
                 <dd className="mt-3 leading-relaxed">
-                  Locations are geofenced to 50 meters. Users are only listed in
-                  the lobby if Supabase confirms their device is inside that
-                  radius via{' '}
-                  <code className="text-xs text-yellow-300">
-                    ensure_active_location
-                  </code>
-                  .
+                  Locations are geofenced to 50 meters. You can only discover and 
+                  send connection requests to people at your current location. Once 
+                  connected, your chats persist wherever you are.
                 </dd>
               </div>
               <div>
                 <dt className="font-semibold text-white text-lg">
-                  Can people see my identity?
+                  Do connections disappear when I leave?
                 </dt>
                 <dd className="mt-3 leading-relaxed">
-                  No. Profiles only surface the fields you share. Private chats
-                  are encrypted and lobbies disappear as soon as the group
-                  closes.
+                  No! The lobby feed shows who's currently at your location, but accepted 
+                  connections become permanent contacts. Rename them, message anytime — 
+                  your relationships last beyond the location.
                 </dd>
               </div>
             </dl>
