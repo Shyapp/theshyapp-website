@@ -1,0 +1,79 @@
+/**
+ * Scrollytelling Design Tokens
+ * Brand colors, typography, and spacing for consistent UI overlays
+ */
+
+:root {
+  /* Brand Colors - Website */
+  --shy-yellow: #fbbf24;
+  --shy-dark: #000000;
+  --shy-purple: #8b5cf6;
+  --shy-pink: #ec4899;
+  --shy-cyan: #06b6d4;
+  
+  /* Brand Colors - Mobile App Reference */
+  --shy-mobile-yellow: #ffce00;
+  --shy-mobile-purple: #7c3aed;
+  
+  /* Semantic Colors */
+  --shy-bg-primary: #000000;
+  --shy-bg-secondary: rgba(0, 0, 0, 0.8);
+  --shy-text-primary: #ffffff;
+  --shy-text-secondary: rgba(255, 255, 255, 0.7);
+  --shy-border: rgba(251, 191, 36, 0.2);
+  
+  /* Interactive States */
+  --shy-hover: rgba(251, 191, 36, 0.1);
+  --shy-active: rgba(251, 191, 36, 0.2);
+  --shy-focus: rgba(251, 191, 36, 0.3);
+  
+  /* Shadows & Glows */
+  --shy-glow-sm: 0 0 20px rgba(251, 191, 36, 0.3);
+  --shy-glow-md: 0 0 40px rgba(251, 191, 36, 0.4);
+  --shy-glow-lg: 0 0 60px rgba(251, 191, 36, 0.5);
+  
+  /* Typography */
+  --shy-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --shy-font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+  
+  /* Spacing (matches Tailwind scale) */
+  --shy-space-xs: 0.5rem;   /* 8px */
+  --shy-space-sm: 0.75rem;  /* 12px */
+  --shy-space-md: 1rem;     /* 16px */
+  --shy-space-lg: 1.5rem;   /* 24px */
+  --shy-space-xl: 2rem;     /* 32px */
+  --shy-space-2xl: 3rem;    /* 48px */
+  
+  /* Border Radius */
+  --shy-radius-sm: 0.375rem;  /* 6px */
+  --shy-radius-md: 0.5rem;    /* 8px */
+  --shy-radius-lg: 0.75rem;   /* 12px */
+  --shy-radius-xl: 1rem;      /* 16px */
+  --shy-radius-full: 9999px;
+  
+  /* Timing Functions */
+  --shy-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --shy-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --shy-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-Index Layers */
+  --shy-z-base: 0;
+  --shy-z-overlay: 100;
+  --shy-z-modal: 200;
+  --shy-z-toast: 300;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --shy-transition-duration: 0ms !important;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

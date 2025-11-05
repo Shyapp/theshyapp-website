@@ -50,13 +50,22 @@ export function ParallaxLayer({ layer, sceneProgress }: ParallaxLayerProps) {
         className={layer.className}
         style={combinedStyle}>
         <video
-          src={layer.src}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
-        />
+          poster={layer.poster}
+          className="w-full h-full object-cover">
+          <source src={layer.src} type="video/webm" />
+          {/* Fallback for browsers without WebM support */}
+          {layer.poster && (
+            <img
+              src={layer.poster}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          )}
+        </video>
       </div>
     );
   }

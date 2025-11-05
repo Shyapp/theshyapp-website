@@ -30,6 +30,7 @@ export interface ParallaxLayer {
   id: string;
   type: 'image' | 'video' | 'element';
   src?: string; // For images/videos
+  poster?: string; // Poster image for videos (AVIF fallback)
   element?: React.ReactNode; // For custom elements
   parallax: ParallaxConfig;
   zIndex?: number;

@@ -9,6 +9,7 @@ import React from 'react';
 import type { SceneConfig } from '@/lib/scrollytelling/types';
 import { useSceneProgress } from '@/hooks/scrollytelling';
 import { ParallaxLayer } from './ParallaxLayer';
+import { SCENES } from '@/lib/scrollytelling/manifest';
 
 interface ScrollytellingSceneProps {
   scene: SceneConfig;
@@ -30,6 +31,9 @@ export function ScrollytellingScene({ scene, children }: ScrollytellingSceneProp
     opacity: isActive ? 1 : 0.3,
     transition: 'opacity 0.3s ease',
   };
+
+  // Get assets from manifest for this scene
+  const assets = SCENES[scene.id];
 
   return (
     <section
