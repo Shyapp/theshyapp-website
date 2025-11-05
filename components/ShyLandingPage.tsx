@@ -721,24 +721,12 @@ function StoreBadge({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Download on the App Store"
-        className="group store-badge inline-flex items-center gap-3 rounded-[12px] bg-black px-4 py-2 text-white ring-1 ring-white/20 transition hover:ring-yellow-400/60">
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          className="shrink-0">
-          <path
-            fill="currentColor"
-            d="M16.36 1.43c0 1.14-.45 2.22-1.19 3.05-.74.84-1.93 1.47-3.08 1.38-.13-1.09.54-2.25 1.26-3.03.81-.87 2.12-1.5 3.01-.4zM20.88 17.04c-.58 1.34-1.27 2.67-2.31 3.88-.78.91-1.72 1.94-2.96 1.95-1.25.02-1.66-.63-3.06-.63s-1.81.62-3.06.65c-1.26.02-2.22-1.01-3-1.92-1.64-1.9-2.9-4.82-2.95-7.66-.03-1.49.3-2.96 1.07-4.22.73-1.2 1.74-2.02 2.95-2.04 1.17-.02 2.05.67 3.06.67s1.78-.67 3.07-.65c1.1.02 2.25.6 3.08 1.63-1.35.81-2.16 2.31-2.04 3.87.16 2.23 2 3.74 4.05 3.96.33.03.65.05.97.03-.1.34-.21.67-.35.99z"
-          />
-        </svg>
-        <span className="flex flex-col leading-none">
-          <span className="text-[10px] uppercase tracking-[.12em] text-white/70">
-            Download on the
-          </span>
-          <span className="-mt-0.5 text-[14px] font-semibold">App Store</span>
-        </span>
+        className="inline-block transition-transform hover:scale-105">
+        <img 
+          src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1672358400" 
+          alt="Download on the App Store" 
+          className="h-[50px] w-auto"
+        />
       </a>
     );
   }
@@ -750,36 +738,12 @@ function StoreBadge({
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Get it on Google Play"
-      className="group store-badge inline-flex items-center gap-3 rounded-[12px] bg-black px-4 py-2 text-white ring-1 ring-white/20 transition hover:ring-yellow-400/60">
-      <svg
-        width="22"
-        height="22"
-        viewBox="0 0 512 512"
-        aria-hidden="true"
-        className="shrink-0">
-        <path
-          fill="#34A853"
-          d="M325.3 234.3 90.6 36.9c-7.3-6-18.2-.8-18.2 8.7v420.8c0 9.5 11 14.6 18.3 8.6l177.8-149.4 0-139.3z"
-        />
-        <path
-          fill="#FBBC05"
-          d="M386.4 197.6 325.3 234l-56.8-47.7 85.6-72c9.7-8.1 24.3-1.1 24.3 11.5v71.8z"
-        />
-        <path
-          fill="#EA4335"
-          d="M386.4 314.4v71.8c0 12.6-14.6 19.6-24.3 11.5l-85.6-72 56.8-47.7 53.1 36.4z"
-        />
-        <path
-          fill="#4285F4"
-          d="M268.5 186.3 90.6 36.9c-7.3-6-18.2-.8-18.2 8.7v420.8c0 9.5 11 14.6 18.3 8.6l177.8-149.4 0-139.3z"
-        />
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span className="text-[10px] uppercase tracking-[.12em] text-white/70">
-          Get it on
-        </span>
-        <span className="-mt-0.5 text-[14px] font-semibold">Google Play</span>
-      </span>
+      className="inline-block transition-transform hover:scale-105">
+      <img 
+        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+        alt="Get it on Google Play" 
+        className="h-[73px] w-auto"
+      />
     </a>
   );
 }
