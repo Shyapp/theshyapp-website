@@ -33,7 +33,13 @@ export const metadata: Metadata = {
   icons: {
     icon: '/shyLogo.png',
   },
-  viewport: 'width=device-width, initial-scale=1',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover', // Safe area support for notched devices
+  },
   themeColor: '#0B0E13',
 };
 

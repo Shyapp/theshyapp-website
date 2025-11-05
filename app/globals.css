@@ -7,6 +7,55 @@
   --shy-yellow-bright: #fcd34d;
   --shy-dark: #000000;
   --shy-dark-secondary: #0a0a0a;
+  
+  /* Container max-widths */
+  --container-padding: 1rem;
+  --container-padding-md: 1.5rem;
+  --container-padding-lg: 2rem;
+}
+
+/* Industry-standard responsive containers */
+@layer components {
+  .container-wrapper {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-xs {
+    @apply container-wrapper max-w-container-xs;
+  }
+  
+  .container-sm {
+    @apply container-wrapper max-w-container-sm;
+  }
+  
+  .container-md {
+    @apply container-wrapper max-w-container-md;
+  }
+  
+  .container-lg {
+    @apply container-wrapper max-w-container-lg;
+  }
+  
+  .container-xl {
+    @apply container-wrapper max-w-container-xl;
+  }
+  
+  .container-2xl {
+    @apply container-wrapper max-w-container-2xl;
+  }
+  
+  /* Full-width section wrapper */
+  .section-wrapper {
+    @apply w-full relative;
+  }
+  
+  /* Safe area for mobile devices (notches, home indicators) */
+  .safe-area-wrapper {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
 }
 
 body {
