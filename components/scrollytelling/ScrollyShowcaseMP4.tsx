@@ -63,23 +63,33 @@ export default function ScrollyShowcaseMP4({
     }
 
     const el = root.current;
+    
+    // Main timeline with smooth scrubbing
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: el,
         start: 'top top',
-        end: '+=200%',
-        scrub: 0.5,
+        end: '+=300%', // Longer scroll for smoother effect
+        scrub: 1, // Smoother scrubbing (0.5 was too fast)
         pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
       }
     });
 
     // Scroll-scrub the background video time (0 → 8s)
     if (bg.current) {
       const video = bg.current;
+      video.pause(); // Ensure video is paused for scrubbing
       
       const scrubVideo = () => {
         const targetDuration = Math.min(video.duration || 8, 8);
-        tl.to(video, { currentTime: targetDuration, ease: 'none' }, 0);
+        // Smoother video scrubbing
+        tl.to(video, { 
+          currentTime: targetDuration, 
+          ease: 'none',
+          duration: 1 
+        }, 0);
       };
 
       if (video.readyState >= 1) {
@@ -101,41 +111,57 @@ export default function ScrollyShowcaseMP4({
       }
     }
 
-    // Diagonal sweep reveal
-    if (enableSweep && sweep.current) {
-      tl.fromTo(sweep.current, 
-        { xPercent: -40, rotate: 18, opacity: 0.0 },
-        { xPercent: 40, rotate: 18, opacity: 0.18, duration: 0.25, ease: 'power2' }, 
-        0.12
+    // Content fade-in and slide up (smooth entrance)
+    if (el.querySelector('.scene-content')) {
+      tl.fromTo('.scene-content', 
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+        0.1
       );
-      tl.to(sweep.current, { opacity: 0, duration: 0.15 }, '>-0.05');
     }
 
-    // Mid silhouette depth
+    // Diagonal sweep reveal (faster, more dramatic)
+    if (enableSweep && sweep.current) {
+      tl.fromTo(sweep.current, 
+        { xPercent: -50, rotate: 18, opacity: 0.0 },
+        { xPercent: 50, rotate: 18, opacity: 0.25, duration: 0.3, ease: 'power2.inOut' }, 
+        0.15
+      );
+      tl.to(sweep.current, { opacity: 0, duration: 0.2, ease: 'power2.out' }, '>-0.1');
+    }
+
+    // Mid silhouette depth (enhanced parallax)
     if (mid.current) {
       tl.fromTo(mid.current, 
-        { yPercent: -6, opacity: 0.06 }, 
-        { yPercent: -12, opacity: 0.12, ease: 'none' }, 
+        { yPercent: 0, opacity: 0.08, scale: 1.05 }, 
+        { yPercent: -15, opacity: 0.15, scale: 1, ease: 'none', duration: 1 }, 
         0
       );
     }
 
-    // Foreground keyed layer punch-in
+    // Foreground keyed layer punch-in (smoother)
     if (fg.current) {
       tl.fromTo(fg.current, 
-        { opacity: 0, yPercent: 6, scale: 0.98 },
-        { opacity: 1, yPercent: -2, scale: 1, ease: 'power1' }, 
-        0.08
+        { opacity: 0, yPercent: 8, scale: 0.96 },
+        { opacity: 1, yPercent: -4, scale: 1.02, ease: 'power2.out', duration: 0.6 }, 
+        0.2
       );
     }
 
-    // Amber pulse ring
+    // Amber pulse ring (multiple pulses for more impact)
     if (enablePulse && pulse.current) {
       const p = pulse.current;
+      // First pulse
       tl.fromTo(p, 
-        { attr: { r: 0 }, opacity: 0.9 }, 
-        { attr: { r: 240 }, opacity: 0, duration: 0.24, ease: 'power2.out' }, 
-        0.16
+        { attr: { r: 0 }, opacity: 1 }, 
+        { attr: { r: 280 }, opacity: 0, duration: 0.5, ease: 'power2.out' }, 
+        0.2
+      );
+      // Second pulse (delayed)
+      tl.fromTo(p, 
+        { attr: { r: 0 }, opacity: 0.6 }, 
+        { attr: { r: 320 }, opacity: 0, duration: 0.6, ease: 'power2.out' }, 
+        0.5
       );
     }
 
@@ -252,8 +278,10 @@ export default function ScrollyShowcaseMP4({
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"/>
 
       {/* UI / copy slot */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24">
-        {children}
+      <div className="scene-content relative z-10 h-full flex items-center justify-center px-6">
+        <div className="w-full max-w-6xl">
+          {children}
+        </div>
       </div>
     </section>
   );
