@@ -1,0 +1,294 @@
+/**
+ * Micro-interactions for parallax UI elements
+ * Adds polish and responsiveness to SVG components
+ */
+
+/* ========================================
+   HOVER EFFECTS
+   ======================================== */
+
+/* Interactive SVG elements */
+svg[class*="ui-"]:hover,
+object[data*=".svg"]:hover {
+  filter: brightness(1.1);
+  transition: filter 0.2s ease;
+}
+
+/* Icon hover effects */
+.icon-interactive {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.icon-interactive:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px var(--shy-yellow));
+}
+
+.icon-interactive:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   ANIMATED ELEMENTS
+   ======================================== */
+
+/* Pulsing badge for emphasis */
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px var(--shy-yellow));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--shy-yellow));
+  }
+}
+
+.badge-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Fade in on scroll */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Typing indicator animation */
+@keyframes typing-dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+.typing-indicator::after {
+  content: '';
+  animation: typing-dots 1.5s infinite;
+}
+
+/* Focus ring animation */
+@keyframes focus-ring {
+  from {
+    stroke-dashoffset: 62.8;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.focus-ring-animate circle {
+  animation: focus-ring 0.8s ease-out forwards;
+}
+
+/* ========================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ======================================== */
+
+/* Reveal on scroll (use with Intersection Observer) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide in from sides */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-left.active,
+.slide-in-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+/* Shimmer effect for loading */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: var(--surface-overlay);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* ========================================
+   INTERACTIVE STATES
+   ======================================== */
+
+/* Button press effect */
+.btn-press {
+  transition: transform 0.1s ease;
+}
+
+.btn-press:active {
+  transform: scale(0.96);
+}
+
+/* Ripple effect (requires JS) */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   TOOLTIP ENHANCEMENTS
+   ======================================== */
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.tooltip-wrapper:hover .tooltip-content,
+.tooltip-wrapper:focus-within .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .badge-pulse,
+  .loading-shimmer,
+  .typing-indicator::after,
+  .focus-ring-animate circle {
+    animation: none !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.icon-interactive:focus-visible,
+.btn-press:focus-visible {
+  outline: 2px solid var(--shy-yellow);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU acceleration for animations */
+.animate-gpu {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-gpu.animation-complete {
+    will-change: auto;
+  }
+}

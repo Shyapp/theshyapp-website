@@ -1,0 +1,10 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Library interior silhouette">
+  <g fill="currentColor" opacity=".9">
+    <rect x="240" y="260" width="420" height="560" rx="16" opacity=".12"/>
+    <rect x="1260" y="260" width="420" height="560" rx="16" opacity=".12"/>
+    <rect x="720" y="600" width="480" height="40" rx="20"/>
+    <rect x="760" y="640" width="400" height="220" rx="16"/>
+    <rect x="760" y="360" width="400" height="20" rx="10" opacity=".2"/>
+    <rect x="760" y="400" width="400" height="20" rx="10" opacity=".15"/>
+  </g>
+</svg>

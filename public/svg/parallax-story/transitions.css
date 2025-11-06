@@ -1,0 +1,236 @@
+/**
+ * Scene transition effects for parallax storytelling
+ * Creates smooth curtain/fade transitions between scenes
+ */
+
+/* ========================================
+   SCENE TRANSITIONS
+   ======================================== */
+
+/* Base scene styling */
+.scene-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Curtain wipe transition */
+.scene-curtain {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.scene-wrapper.transitioning .scene-curtain {
+  opacity: 1;
+}
+
+/* Fade between scenes */
+@keyframes scene-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scene-content {
+  animation: scene-fade-in 1s ease-out forwards;
+}
+
+/* ========================================
+   STICKY SCENE PINNING
+   ======================================== */
+
+/* Pin scene while scrolling through content */
+.scene-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* Content that scrolls over pinned scene */
+.scene-overlay-content {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.95) 10%
+  );
+  padding-top: 40vh;
+}
+
+/* ========================================
+   SCENE REVEAL EFFECTS
+   ======================================== */
+
+/* Reveal content as user scrolls into scene */
+.scene-reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.scene-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered reveal for multiple elements */
+.scene-reveal-group > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scene-reveal-group.in-view > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.scene-reveal-group.in-view > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.scene-reveal-group.in-view > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.scene-reveal-group.in-view > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* ========================================
+   VIDEO LAYER TRANSITIONS
+   ======================================== */
+
+/* Smooth video fade in */
+video.scene-video {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+video.scene-video.loaded {
+  opacity: 1;
+}
+
+/* Ken Burns effect (subtle zoom on background) */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.ken-burns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+/* ========================================
+   SCENE SEPARATORS
+   ======================================== */
+
+/* Gradient separator between scenes */
+.scene-separator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30vh;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.8)
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Divider with accent line */
+.scene-divider {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--shy-yellow) 50%,
+    transparent
+  );
+  margin: 4rem 0;
+}
+
+.scene-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--shy-yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--shy-yellow);
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Simpler transitions on mobile for performance */
+  .scene-reveal,
+  .scene-reveal-group > * {
+    transition-duration: 0.4s;
+  }
+  
+  /* Disable complex effects on mobile */
+  .ken-burns {
+    animation: none;
+  }
+  
+  .scene-overlay-content {
+    padding-top: 20vh;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-curtain,
+  .scene-reveal,
+  .scene-reveal-group > *,
+  video.scene-video {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .scene-reveal,
+  .scene-reveal-group > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

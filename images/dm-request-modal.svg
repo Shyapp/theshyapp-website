@@ -1,0 +1,10 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DM request modal">
+  <rect x="300" y="160" width="600" height="480" rx="20" fill="currentColor" opacity=".05" stroke="currentColor" stroke-opacity=".10"/>
+  <text x="360" y="240" fill="currentColor" font-family="Roboto,system-ui" font-size="28" font-weight="700">Send request to @RedHat88</text>
+  <text x="360" y="280" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="18">“USB-C? Will swap cookie.”</text>
+  <text x="360" y="320" fill="currentColor" opacity=".6" font-family="Roboto,system-ui" font-size="14">They’ll see your username + About Me. You both choose.</text>
+  <rect x="360" y="380" width="200" height="56" rx="12" fill="currentColor"/>
+  <text x="390" y="416" fill="#000" font-family="Roboto,system-ui" font-size="18" font-weight="700">Send request</text>
+  <rect x="580" y="380" width="160" height="56" rx="12" fill="none" stroke="currentColor" stroke-opacity=".20"/>
+  <text x="630" y="416" fill="currentColor" font-family="Roboto,system-ui" font-size="18">Cancel</text>
+</svg>

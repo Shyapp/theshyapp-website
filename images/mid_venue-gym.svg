@@ -1,0 +1,12 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gym bench area silhouette">
+  <g fill="currentColor" opacity=".9">
+    <rect x="300" y="280" width="18" height="520" rx="9"/>
+    <rect x="600" y="280" width="18" height="520" rx="9"/>
+    <rect x="320" y="420" width="280" height="28" rx="14"/>
+    <rect x="450" y="448" width="20" height="220" rx="10"/>
+    <rect x="720" y="640" width="520" height="52" rx="26"/>
+    <rect x="700" y="692" width="560" height="20" rx="10" opacity=".2"/>
+    <rect x="1280" y="520" width="40" height="160" rx="20"/>
+    <rect x="1330" y="500" width="60" height="200" rx="30" opacity=".15"/>
+  </g>
+</svg>
