@@ -1,0 +1,7 @@
+<svg viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CTA banner">
+  <rect x="40" y="30" width="1120" height="160" rx="20" fill="currentColor" opacity=".06" stroke="currentColor" stroke-opacity=".10"/>
+  <rect x="80" y="70" width="180" height="80" rx="12" fill="none" stroke="currentColor" stroke-opacity=".15"/>
+  <rect x="280" y="70" width="180" height="80" rx="12" fill="none" stroke="currentColor" stroke-opacity=".15"/>
+  <text x="490" y="105" fill="currentColor" font-family="Roboto,system-ui" font-size="26" font-weight="700">Talk to the room.</text>
+  <text x="490" y="135" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="16">Without walking up. Open the Shy Map.</text>
+</svg>

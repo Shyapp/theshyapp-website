@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lobby list">
+  <defs>
+    <linearGradient id="rowFocus" x1="0" x2="1">
+      <stop offset="0" stop-color="currentColor" stop-opacity=".18"/>
+      <stop offset="1" stop-color="currentColor" stop-opacity=".08"/>
+    </linearGradient>
+  </defs>
+  <rect x="250" y="180" width="700" height="82" rx="16" fill="none" stroke="currentColor" stroke-opacity=".10"/>
+  <rect x="250" y="282" width="700" height="82" rx="16" fill="url(#rowFocus)" stroke="currentColor" stroke-opacity=".15"/>
+  <rect x="250" y="384" width="700" height="82" rx="16" fill="none" stroke="currentColor" stroke-opacity=".10"/>
+  <circle cx="290" cy="221" r="16" fill="currentColor" opacity=".25"/>
+  <circle cx="290" cy="323" r="16" fill="currentColor" opacity=".25"/>
+  <circle cx="290" cy="425" r="16" fill="currentColor" opacity=".25"/>
+  <text x="322" y="212" fill="currentColor" font-family="Roboto,system-ui" font-size="22" font-weight="700">@RedHat88</text>
+  <text x="322" y="238" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="16">"USB-C? Will swap cookie."</text>
+  <text x="322" y="314" fill="currentColor" font-family="Roboto,system-ui" font-size="22" font-weight="700">@SketchKit</text>
+  <text x="322" y="340" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="16">"Logo sketch 20m—today."</text>
+  <text x="322" y="416" fill="currentColor" font-family="Roboto,system-ui" font-size="22" font-weight="700">@Juniper</text>
+  <text x="322" y="442" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="16">"Tea recs / board games."</text>
+</svg>

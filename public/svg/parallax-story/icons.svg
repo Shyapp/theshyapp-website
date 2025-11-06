@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4Z" fill="currentColor"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="report" viewBox="0 0 24 24"><path d="M12 8v6M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="block" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 7l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="map-pin" viewBox="0 0 24 24"><path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="currentColor"/></symbol>
+  <symbol id="timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 13V8M10 3h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12l5 5L19 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10v6M12 7h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sparkles" viewBox="0 0 24 24"><path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z" fill="currentColor"/></symbol>
+  <symbol id="dumbbell" viewBox="0 0 24 24"><path d="M3 10h3v4H3v-4Zm15 0h3v4h-3v-4ZM7 11h10v2H7v-2Z" fill="currentColor"/></symbol>
+  <symbol id="tea" viewBox="0 0 24 24"><path d="M5 8h11a3 3 0 0 1 0 6H5a4 4 0 0 1-4-4 4 4 0 0 1 4-4Zm14 3h2a2 2 0 0 1 0 4h-2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 16v1a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3v-1" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="2" y="17" width="20" height="3" rx="1" fill="currentColor"/></symbol>
+  <symbol id="cafe" viewBox="0 0 24 24"><path d="M4 7h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V7Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 9h3a2 2 0 0 1 0 4h-3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="library" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="gym" viewBox="0 0 24 24"><path d="M4 10h3v4H4zm13 0h3v4h-3zM8 11h8v2H8z" fill="currentColor"/></symbol>
+</svg>

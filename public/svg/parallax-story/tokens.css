@@ -1,0 +1,33 @@
+/**
+ * Shy Design Tokens for SVG Story Assets
+ * Include once in your app: import '@/public/svg/parallax-story/tokens.css';
+ */
+
+:root {
+  /* Brand colors */
+  --shy-black: #000;
+  --shy-black-2: #0A0A0A;
+  --shy-amber: #FBBF24;
+  --shy-amber-lite: #FCD34D;
+  --shy-violet: #8B5CF6;
+  --shy-pink: #EC4899;
+  --shy-cyan: #06B6D4;
+
+  /* Text hierarchy */
+  --text-1: #fff;
+  --text-2: rgba(255, 255, 255, .75);
+  --text-3: rgba(255, 255, 255, .6);
+
+  /* UI elements */
+  --border: rgba(255, 255, 255, .10);
+  --card: rgba(255, 255, 255, .05);
+}
+
+/* Utility classes for SVG theming */
+.ui-amber { color: var(--shy-amber); }
+.ui-violet { color: var(--shy-violet); }
+.ui-pink { color: var(--shy-pink); }
+.ui-cyan { color: var(--shy-cyan); }
+.ui-white { color: var(--text-1); }
+.ui-muted { color: var(--text-2); }
+.ui-subtle { color: var(--text-3); }
