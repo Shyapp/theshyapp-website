@@ -1,0 +1,283 @@
+```
+═══════════════════════════════════════════════════════════════════════════
+                    🎬 SHY PARALLAX - BRANCH STRATEGY
+═══════════════════════════════════════════════════════════════════════════
+
+REPOSITORY: shy-app/marketing
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  BRANCH: main                                                           │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                         │
+│  Status:   ✅ PRODUCTION (LIVE)                                         │
+│  Deploy:   shy-landing.vercel.app (or your custom domain)              │
+│  Content:  Original landing page                                       │
+│  Changes:  ZERO - Completely untouched                                 │
+│                                                                         │
+│  Routes:                                                                │
+│    /          → Landing page                                           │
+│    /download  → Download page                                          │
+│                                                                         │
+│  ⚠️  DO NOT MODIFY THIS BRANCH UNLESS READY TO GO LIVE                  │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                               ↓ ↓ ↓ BRANCHED OFF
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│  BRANCH: parallax-story (NEW) ← YOU ARE HERE                            │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  │
+│                                                                         │
+│  Status:   🚧 DEVELOPMENT                                               │
+│  Deploy:   shy-landing-git-parallax-story.vercel.app (preview)         │
+│  Content:  Original site + Parallax features                           │
+│  Changes:  +27 files, ~1,600 lines                                     │
+│                                                                         │
+│  Routes:                                                                │
+│    /               → Landing page (same as main)                       │
+│    /download       → Download page (same as main)                      │
+│    /stories-gsap   → 🆕 NEW: Parallax storytelling                      │
+│                                                                         │
+│  What's New:                                                            │
+│    ✨ Parallax animation engine (~2KB)                                  │
+│    ✨ 14 SVG assets for UI + venue silhouettes                         │
+│    ✨ React components + hooks                                          │
+│    ✨ Full TypeScript support                                           │
+│    ✨ Accessibility (reduced-motion)                                    │
+│    ✨ Documentation (4 guides)                                          │
+│                                                                         │
+│  ✅ SAFE TO EXPERIMENT - Won't affect production                        │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+                            📊 DEPLOYMENT FLOW
+═══════════════════════════════════════════════════════════════════════════
+
+Step 1: PUSH parallax-story branch to GitHub
+────────────────────────────────────────────────────────────────────────
+
+  $ git push -u origin parallax-story
+
+  Result:
+  ✓ GitHub receives parallax-story branch
+  ✓ Vercel detects new branch
+  ✓ Auto-creates preview deployment
+  ✓ Preview URL: shy-landing-git-parallax-story.vercel.app
+
+
+Step 2: DEVELOP on parallax-story branch
+────────────────────────────────────────────────────────────────────────
+
+  $ git checkout parallax-story
+  $ npm run dev
+  $ # Make changes, add videos, tweak animations
+  $ git add .
+  $ git commit -m "feat: Update parallax"
+  $ git push origin parallax-story
+
+  Result:
+  ✓ Preview deployment updates automatically
+  ✓ Production site (main) remains unchanged
+  ✓ Test on preview URL before merging
+
+
+Step 3: MERGE when ready (optional - only when perfect)
+────────────────────────────────────────────────────────────────────────
+
+  $ git checkout main
+  $ git merge parallax-story
+  $ git push origin main
+
+  Result:
+  ✓ Production site now includes parallax features
+  ✓ Live at: shy-landing.vercel.app
+  ✓ /stories-gsap route is now public
+
+═══════════════════════════════════════════════════════════════════════════
+                          🎨 FILE ORGANIZATION
+═══════════════════════════════════════════════════════════════════════════
+
+┌───────────────────────┬─────────────┬─────────────────────────────────┐
+│ File/Folder           │ main branch │ parallax-story branch           │
+├───────────────────────┼─────────────┼─────────────────────────────────┤
+│ app/page.tsx          │ ✅ Original │ ✅ Same (untouched)             │
+│ app/download/         │ ✅ Original │ ✅ Same (untouched)             │
+│ app/stories-gsap/     │ ❌ N/A      │ 🆕 NEW (parallax page)          │
+│ components/Shy*.tsx   │ ✅ Original │ ✅ Same (untouched)             │
+│ components/scrolly*/  │ ❌ N/A      │ 🆕 NEW (parallax components)    │
+│ hooks/scrollytelling/ │ ❌ N/A      │ 🆕 NEW (animation hooks)        │
+│ lib/scrollytelling/   │ ⚠️ Partial  │ 🆕 ENHANCED (added gsap-scroll) │
+│ public/svg/parallax*/ │ ❌ N/A      │ 🆕 NEW (14 SVG assets)          │
+│ package.json          │ ✅ Original │ ✅ Same (no new deps)           │
+│ next.config.js        │ ✅ Original │ ✅ Same (untouched)             │
+│ tailwind.config.ts    │ ✅ Original │ ✅ Same (untouched)             │
+└───────────────────────┴─────────────┴─────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+                        🚦 TESTING WORKFLOW
+═══════════════════════════════════════════════════════════════════════════
+
+Local Development
+──────────────────────────────────────────────────────────────────────────
+
+  1. Switch to parallax-story branch
+     $ git checkout parallax-story
+
+  2. Start dev server
+     $ npm run dev
+
+  3. Test parallax route
+     → http://localhost:3000/stories-gsap
+
+  4. Test original routes (ensure unchanged)
+     → http://localhost:3000           (landing)
+     → http://localhost:3000/download  (download)
+
+
+Preview Deployment (After git push)
+──────────────────────────────────────────────────────────────────────────
+
+  1. Push to GitHub
+     $ git push origin parallax-story
+
+  2. Check Vercel dashboard
+     → Project: shy-landing
+     → Branch: parallax-story
+     → URL: shy-landing-git-parallax-story.vercel.app
+
+  3. Test preview URL
+     → /stories-gsap  (parallax page)
+     → /             (original landing)
+     → /download     (original download)
+
+  4. Test on devices
+     → Mobile (iOS Safari, Chrome)
+     → Tablet (iPad)
+     → Desktop (Chrome, Safari, Firefox)
+
+  5. Performance audit
+     → Lighthouse score
+     → Network throttling
+     → Reduced motion test
+
+
+Production Deployment (When ready to merge)
+──────────────────────────────────────────────────────────────────────────
+
+  1. Merge to main
+     $ git checkout main
+     $ git merge parallax-story
+
+  2. Push to production
+     $ git push origin main
+
+  3. Vercel auto-deploys
+     → Live at: shy-landing.vercel.app
+
+  4. Verify live site
+     → /stories-gsap  (now public)
+     → /             (original landing still works)
+     → /download     (original download still works)
+
+═══════════════════════════════════════════════════════════════════════════
+                      📋 COMMIT HISTORY
+═══════════════════════════════════════════════════════════════════════════
+
+parallax-story branch (4 commits ahead of main):
+
+  * 466050c - docs: Add setup summary
+  * 3afe7f4 - docs: Add quick start guide for parallax branch
+  * 199e8e1 - docs: Add parallax deployment and structure guides
+  * 956b7b1 - feat: Add parallax storytelling system with GSAP-like ScrollTrigger
+  |
+  | (branched from here)
+  ↓
+  * 2f50cce - Move 'How It Works' to #2 for better conversion
+            ↑
+            main branch (production)
+
+═══════════════════════════════════════════════════════════════════════════
+                       📚 DOCUMENTATION INDEX
+═══════════════════════════════════════════════════════════════════════════
+
+1. SETUP_SUMMARY.md (this file)
+   → Visual overview of branch strategy
+
+2. QUICKSTART.md
+   → Step-by-step guide to get started
+
+3. PARALLAX_DEPLOYMENT.md
+   → Detailed deployment workflow
+   → Vercel setup instructions
+   → Customization guide
+
+4. PARALLAX_STRUCTURE.md
+   → Complete directory structure
+   → File organization
+   → What's changed vs unchanged
+
+5. lib/scrollytelling/README.md
+   → API reference for parallax engine
+   → Usage examples
+   → Performance tips
+
+6. public/svg/parallax-story/INTEGRATION.md
+   → SVG asset usage guide
+   → Brand token system
+   → Optimization tips
+
+═══════════════════════════════════════════════════════════════════════════
+                        ✅ CURRENT STATUS
+═══════════════════════════════════════════════════════════════════════════
+
+  ✅ Git branch created:        parallax-story
+  ✅ Parallax system added:     27 files
+  ✅ SVG assets created:        14 files
+  ✅ Documentation written:     6 guides
+  ✅ Example page ready:        /stories-gsap
+  ✅ Production site safe:      main branch untouched
+  ✅ Zero dependencies added:   No package.json changes
+  ✅ Brand colors configured:   Shy theme applied
+  ✅ Accessibility included:    Reduced-motion support
+
+  🚧 TODO:
+  ⬜ Push to GitHub:            git push -u origin parallax-story
+  ⬜ Add video assets:          public/story/*/*.webm
+  ⬜ Test preview deployment:   Check Vercel dashboard
+  ⬜ Customize animations:      Tweak parallax speeds
+  ⬜ Merge to production:       When ready
+
+═══════════════════════════════════════════════════════════════════════════
+                      🎯 NEXT COMMANDS TO RUN
+═══════════════════════════════════════════════════════════════════════════
+
+# Push parallax branch to GitHub (enables preview deployment)
+git push -u origin parallax-story
+
+# Create video folder structure
+mkdir -p public/story/{hook,mechanic,charger,logo,tea,gym}
+
+# Test locally
+npm run dev
+# Visit: http://localhost:3000/stories-gsap
+
+# Make changes, commit, and push
+git add .
+git commit -m "feat: Add videos and customize branding"
+git push origin parallax-story
+
+═══════════════════════════════════════════════════════════════════════════
+
+Your production site is 100% SAFE on the main branch.
+The parallax-story branch is isolated for safe experimentation.
+
+When you push parallax-story to GitHub, Vercel will create a separate
+preview deployment that won't affect your live site.
+
+Happy coding! 🎉
+
+═══════════════════════════════════════════════════════════════════════════
+```
