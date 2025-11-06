@@ -456,6 +456,78 @@ export default function ShyLandingPage() {
         </div>
       </section>
 
+      {/* HOW IT WORKS - Simple Step Cards */}
+      <section className="relative z-10 py-32 md:py-40 border-y border-white/10">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              How Shy Works
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+              Four simple steps to meet people nearby and build lasting connections
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Step 1 */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-b from-yellow-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-2xl font-black mb-6 ring-1 ring-yellow-400/30">
+                  1
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Find a Shy Location</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Open the app at a coffee shop, gym, library, or any verified Shy Location near you.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-b from-yellow-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-2xl font-black mb-6 ring-1 ring-yellow-400/30">
+                  2
+                </div>
+                <h3 className="text-xl font-semibold mb-3">See Who's Here</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Browse profiles of real people at your location right now. No fake profiles, no bots.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-b from-yellow-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-2xl font-black mb-6 ring-1 ring-yellow-400/30">
+                  3
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Send a Request</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Like someone's profile? Send a chat request for 1 token. It's that simple.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-b from-yellow-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-2xl font-black mb-6 ring-1 ring-yellow-400/30">
+                  4
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Connect Forever</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Once they accept, you're connected permanently. Message anytime, anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LOCATIONS */}
       <section
         className="relative z-10 py-32 md:py-40 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent"

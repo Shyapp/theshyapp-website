@@ -1,3 +1,0 @@
-# Poster Image Placeholder
-# Replace with actual 1920x1080 AVIF poster image from Sora video first frame
-# Command to generate: ffmpeg -i bg_softgradient.webm -vframes 1 -f image2 poster.avif
