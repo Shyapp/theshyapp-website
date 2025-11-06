@@ -1,0 +1,9 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Create group">
+  <rect x="320" y="180" width="560" height="440" rx="20" fill="currentColor" opacity=".05" stroke="currentColor" stroke-opacity=".10"/>
+  <text x="380" y="250" fill="currentColor" font-family="Roboto,system-ui" font-size="26" font-weight="700">Create Group</text>
+  <rect x="380" y="280" width="440" height="56" rx="12" fill="none" stroke="currentColor" stroke-opacity=".20"/>
+  <text x="396" y="316" fill="currentColor" opacity=".75" font-family="Roboto,system-ui" font-size="18">Group title</text>
+  <text x="380" y="352" fill="currentColor" opacity=".6" font-family="Roboto,system-ui" font-size="14">Use a clear, action-first name.</text>
+  <rect x="380" y="396" width="160" height="56" rx="12" fill="currentColor"/>
+  <text x="426" y="432" fill="#000" font-family="Roboto,system-ui" font-size="18" font-weight="700">Create</text>
+</svg>

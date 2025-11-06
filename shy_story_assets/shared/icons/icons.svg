@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4Z" fill="currentColor"/></symbol>
+  <symbol id="map-pin" viewBox="0 0 24 24"><path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="currentColor"/></symbol>
+  <symbol id="timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 13V8M10 3h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12l5 5L19 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10v6M12 7h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="dumbbell" viewBox="0 0 24 24"><path d="M3 10h3v4H3v-4Zm15 0h3v4h-3v-4ZM7 11h10v2H7v-2Z" fill="currentColor"/></symbol>
+  <symbol id="tea" viewBox="0 0 24 24"><path d="M5 8h11a3 3 0 0 1 0 6H5a4 4 0 0 1-4-4 4 4 0 0 1 4-4Zm14 3h2a2 2 0 0 1 0 4h-2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 16v1a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3v-1" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="2" y="17" width="20" height="3" rx="1" fill="currentColor"/></symbol>
+</svg>

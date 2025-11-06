@@ -1,0 +1,10 @@
+<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venue chips">
+  <g>
+    <rect x="280" y="36" width="160" height="48" rx="24" fill="none" stroke="currentColor" stroke-opacity=".25"/>
+    <text x="360" y="66" text-anchor="middle" fill="currentColor" font-family="Roboto,system-ui" font-size="18">Café</text>
+    <rect x="480" y="36" width="160" height="48" rx="24" fill="currentColor"/>
+    <text x="560" y="66" text-anchor="middle" fill="#000" font-family="Roboto,system-ui" font-size="18" font-weight="700">Library</text>
+    <rect x="680" y="36" width="160" height="48" rx="24" fill="none" stroke="currentColor" stroke-opacity=".25"/>
+    <text x="760" y="66" text-anchor="middle" fill="currentColor" font-family="Roboto,system-ui" font-size="18">Gym</text>
+  </g>
+</svg>

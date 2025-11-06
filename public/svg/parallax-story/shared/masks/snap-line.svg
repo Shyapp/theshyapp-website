@@ -1,0 +1,12 @@
+<!-- Amber snap line for safety beats -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <line 
+    x1="0" 
+    y1="540" 
+    x2="1920" 
+    y2="540" 
+    stroke="#FBBF24" 
+    stroke-width="1" 
+    opacity="0.6"
+  />
+</svg>

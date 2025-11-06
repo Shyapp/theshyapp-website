@@ -1,0 +1,10 @@
+<svg viewBox="0 0 600 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Progress dots">
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-opacity=".35">
+    <circle cx="60" cy="24" r="8" fill="currentColor"/>
+    <circle cx="140" cy="24" r="8"/>
+    <circle cx="220" cy="24" r="8"/>
+    <circle cx="300" cy="24" r="8"/>
+    <circle cx="380" cy="24" r="8"/>
+    <circle cx="460" cy="24" r="8"/>
+  </g>
+</svg>

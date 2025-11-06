@@ -1,0 +1,12 @@
+<svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Amber pulse ring">
+  <defs>
+    <radialGradient id="pulse">
+      <stop offset="0" stop-color="#FBBF24" stop-opacity="0.7"/>
+      <stop offset="0.4" stop-color="#FBBF24" stop-opacity="0.18"/>
+      <stop offset="0.75" stop-color="#FBBF24" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="300" cy="300" r="280" fill="url(#pulse)"/>
+  <circle cx="300" cy="300" r="6" fill="#FBBF24"/>
+</svg>

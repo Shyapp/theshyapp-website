@@ -1,0 +1,7 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coworking silhouette">
+  <g fill="#0A0A0A" opacity=".2">
+    <rect x="200" y="280" width="420" height="520" rx="20"/>
+    <rect x="700" y="320" width="1020" height="380" rx="24"/>
+    <rect x="740" y="720" width="300" height="60" rx="30"/>
+  </g>
+</svg>

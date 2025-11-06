@@ -1,0 +1,7 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Café bar silhouette">
+  <g fill="#0A0A0A" opacity=".2">
+    <rect x="260" y="280" width="1400" height="120" rx="20"/>
+    <rect x="300" y="420" width="1280" height="380" rx="28" opacity=".12"/>
+    <rect x="340" y="740" width="320" height="40" rx="20"/>
+  </g>
+</svg>
