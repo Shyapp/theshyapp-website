@@ -396,68 +396,8 @@ export default function ShyLandingPage() {
         </div>
       </section>
 
-      {/* STATS / SOCIAL PROOF */}
-      <section className="relative z-10 py-24 border-y border-white/5">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-            <StatCard number="Real" label="People at your location" />
-            <StatCard number="1 token" label="To start a conversation" />
-            <StatCard number="0 leaks" label="Personal data shared" />
-            <StatCard number="45+" label="Cities with Shy Locations" />
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES SHOWCASE */}
-      <section className="relative z-10 py-32 md:py-40" id="features">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Features that <span className="text-yellow-300">empower you</span>
-            </h2>
-            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Everything you need to connect authentically while maintaining
-              your privacy
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon={<MapIcon />}
-              title="Verified Shy Locations"
-              description="Only see people at the same location as you, right now. No fake profiles, no catfishing — just real people you can actually meet."
-            />
-            <FeatureCard
-              icon={<ChatIcon />}
-              title="Intentional discovery, lasting connections"
-              description="Send a chat request for 1 token when you're at the same location. Once accepted, the connection is yours to keep — message anytime, rename contacts, build real relationships."
-            />
-            <FeatureCard
-              icon={<ShieldIcon />}
-              title="Privacy-first messaging"
-              description="All chats are encrypted end-to-end. Your connections persist after you leave the location, giving you full control over ongoing conversations."
-            />
-            <FeatureCard
-              icon={<GlobeIcon />}
-              title="Works everywhere"
-              description="Use Shy on your phone, computer, or tablet. Your connections and conversations stay in sync across all your devices."
-            />
-            <FeatureCard
-              icon={<BellIcon />}
-              title="See who's here, right now"
-              description="Get instant updates when someone new arrives at your location. Never miss the chance to connect with someone interesting nearby."
-            />
-            <FeatureCard
-              icon={<StarIcon />}
-              title="Unlimited tier perks"
-              description="Upgrade for unlimited tokens, priority support, and exclusive Shy Locations curated for top members."
-            />
-          </div>
-        </div>
-      </section>
-
       {/* HOW IT WORKS - Simple Step Cards */}
-      <section className="relative z-10 py-32 md:py-40 border-y border-white/10">
+      <section className="relative z-10 py-32 md:py-40 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -524,6 +464,66 @@ export default function ShyLandingPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES SHOWCASE */}
+      <section className="relative z-10 py-32 md:py-40 border-y border-white/10" id="features">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Features that <span className="text-yellow-300">empower you</span>
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+              Everything you need to connect authentically while maintaining
+              your privacy
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={<MapIcon />}
+              title="Verified Shy Locations"
+              description="Only see people at the same location as you, right now. No fake profiles, no catfishing — just real people you can actually meet."
+            />
+            <FeatureCard
+              icon={<ChatIcon />}
+              title="Intentional discovery, lasting connections"
+              description="Send a chat request for 1 token when you're at the same location. Once accepted, the connection is yours to keep — message anytime, rename contacts, build real relationships."
+            />
+            <FeatureCard
+              icon={<ShieldIcon />}
+              title="Privacy-first messaging"
+              description="All chats are encrypted end-to-end. Your connections persist after you leave the location, giving you full control over ongoing conversations."
+            />
+            <FeatureCard
+              icon={<GlobeIcon />}
+              title="Works everywhere"
+              description="Use Shy on your phone, computer, or tablet. Your connections and conversations stay in sync across all your devices."
+            />
+            <FeatureCard
+              icon={<BellIcon />}
+              title="See who's here, right now"
+              description="Get instant updates when someone new arrives at your location. Never miss the chance to connect with someone interesting nearby."
+            />
+            <FeatureCard
+              icon={<StarIcon />}
+              title="Unlimited tier perks"
+              description="Upgrade for unlimited tokens, priority support, and exclusive Shy Locations curated for top members."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* STATS / SOCIAL PROOF */}
+      <section className="relative z-10 py-24 border-b border-white/5">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            <StatCard number="Real" label="People at your location" />
+            <StatCard number="1 token" label="To start a conversation" />
+            <StatCard number="0 leaks" label="Personal data shared" />
+            <StatCard number="45+" label="Cities with Shy Locations" />
           </div>
         </div>
       </section>
