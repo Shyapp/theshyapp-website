@@ -1,33 +1,202 @@
 /**
  * Shy Design Tokens for SVG Story Assets
- * Include once in your app: import '@/public/svg/parallax-story/tokens.css';
+ * Matches globals.css brand colors for consistency
+ * 
+ * Usage:
+ *   1. Import once in app/layout.tsx or _app.tsx
+ *   2. SVGs will automatically pick up brand colors via currentColor
+ *   3. Use utility classes for explicit theming
  */
 
 :root {
-  /* Brand colors */
-  --shy-black: #000;
-  --shy-black-2: #0A0A0A;
-  --shy-amber: #FBBF24;
-  --shy-amber-lite: #FCD34D;
-  --shy-violet: #8B5CF6;
-  --shy-pink: #EC4899;
-  --shy-cyan: #06B6D4;
+  /* === BRAND COLORS === */
+  /* Primary brand colors (from globals.css) */
+  --shy-yellow: #fbbf24;           /* Primary accent - Shy yellow */
+  --shy-yellow-bright: #fcd34d;    /* Bright yellow highlight */
+  --shy-dark: #000000;             /* Primary dark background */
+  --shy-dark-secondary: #0a0a0a;   /* Secondary dark surface */
+  
+  /* Legacy aliases (for backward compatibility) */
+  --shy-amber: var(--shy-yellow);
+  --shy-amber-lite: var(--shy-yellow-bright);
+  --shy-black: var(--shy-dark);
+  --shy-black-2: var(--shy-dark-secondary);
 
-  /* Text hierarchy */
-  --text-1: #fff;
-  --text-2: rgba(255, 255, 255, .75);
-  --text-3: rgba(255, 255, 255, .6);
+  /* === TEXT HIERARCHY === */
+  /* Light mode text (for dark backgrounds) */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-disabled: rgba(255, 255, 255, 0.38);
+  
+  /* Dark mode text (for light backgrounds) */
+  --text-dark-primary: #000000;
+  --text-dark-secondary: rgba(0, 0, 0, 0.75);
+  --text-dark-tertiary: rgba(0, 0, 0, 0.6);
 
-  /* UI elements */
-  --border: rgba(255, 255, 255, .10);
-  --card: rgba(255, 255, 255, .05);
+  /* Legacy aliases */
+  --text-1: var(--text-primary);
+  --text-2: var(--text-secondary);
+  --text-3: var(--text-tertiary);
+
+  /* === UI ELEMENTS === */
+  /* Borders and dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  
+  /* Surface colors */
+  --surface-overlay: rgba(255, 255, 255, 0.05);
+  --surface-raised: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(255, 255, 255, 0.12);
+  
+  /* Legacy aliases */
+  --border: var(--border-default);
+  --card: var(--surface-overlay);
+
+  /* === SEMANTIC COLORS === */
+  /* States */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* === OPACITY LEVELS === */
+  --opacity-disabled: 0.38;
+  --opacity-hover: 0.08;
+  --opacity-focus: 0.12;
+  --opacity-selected: 0.16;
 }
 
-/* Utility classes for SVG theming */
-.ui-amber { color: var(--shy-amber); }
-.ui-violet { color: var(--shy-violet); }
-.ui-pink { color: var(--shy-pink); }
-.ui-cyan { color: var(--shy-cyan); }
-.ui-white { color: var(--text-1); }
-.ui-muted { color: var(--text-2); }
-.ui-subtle { color: var(--text-3); }
+/* ========================================
+   UTILITY CLASSES - SVG Theming
+   ======================================== */
+
+/* Primary brand colors */
+.ui-yellow,
+.ui-amber {
+  color: var(--shy-yellow);
+}
+
+.ui-yellow-bright,
+.ui-amber-lite {
+  color: var(--shy-yellow-bright);
+}
+
+.ui-dark {
+  color: var(--shy-dark);
+}
+
+/* Text hierarchy */
+.ui-white,
+.ui-text-primary {
+  color: var(--text-primary);
+}
+
+.ui-muted,
+.ui-text-secondary {
+  color: var(--text-secondary);
+}
+
+.ui-subtle,
+.ui-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.ui-text-disabled {
+  color: var(--text-disabled);
+}
+
+/* Semantic colors */
+.ui-success {
+  color: var(--color-success);
+}
+
+.ui-warning {
+  color: var(--color-warning);
+}
+
+.ui-error {
+  color: var(--color-error);
+}
+
+.ui-info {
+  color: var(--color-info);
+}
+
+/* ========================================
+   SVG-SPECIFIC STYLES
+   ======================================== */
+
+/* Ensure SVGs inherit color properly */
+svg[class*="ui-"] {
+  fill: currentColor;
+}
+
+svg[class*="ui-"] use {
+  fill: inherit;
+}
+
+/* Icon sizing utilities */
+.svg-xs { width: 1rem; height: 1rem; }      /* 16px */
+.svg-sm { width: 1.25rem; height: 1.25rem; } /* 20px */
+.svg-md { width: 1.5rem; height: 1.5rem; }   /* 24px */
+.svg-lg { width: 2rem; height: 2rem; }       /* 32px */
+.svg-xl { width: 2.5rem; height: 2.5rem; }   /* 40px */
+
+/* Ensure proper rendering */
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+/* ========================================
+   DARK MODE SUPPORT (if needed)
+   ======================================== */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Override text colors for light mode */
+    --text-primary: var(--text-dark-primary);
+    --text-secondary: var(--text-dark-secondary);
+    --text-tertiary: var(--text-dark-tertiary);
+    
+    /* Invert borders for light backgrounds */
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-default: rgba(0, 0, 0, 0.12);
+    --border-strong: rgba(0, 0, 0, 0.18);
+    
+    /* Invert surfaces */
+    --surface-overlay: rgba(0, 0, 0, 0.05);
+    --surface-raised: rgba(0, 0, 0, 0.08);
+    --surface-hover: rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* ========================================
+   USAGE EXAMPLES
+   ======================================== */
+
+/*
+  Icon from sprite with brand color:
+  <svg class="ui-yellow svg-md">
+    <use href="/svg/parallax-story/icons.svg#dumbbell"/>
+  </svg>
+
+  Badge with custom size:
+  <svg class="ui-yellow svg-lg">
+    <use href="/svg/parallax-story/badges.svg#badge-accepted"/>
+  </svg>
+
+  Inline SVG with muted color:
+  <object 
+    data="/svg/parallax-story/dm-request-modal.svg" 
+    class="ui-muted w-full h-auto"
+  />
+
+  Parallax mid-layer silhouette:
+  <img 
+    src="/svg/parallax-story/mid_venue-cafe.svg" 
+    class="ui-subtle absolute inset-0 opacity-10" 
+    alt=""
+  />
+*/

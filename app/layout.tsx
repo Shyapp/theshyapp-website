@@ -1,6 +1,7 @@
 import React from 'react';
 import type {Metadata} from 'next';
 import './globals.css';
+import '@/public/svg/parallax-story/tokens.css';
 import {Analytics} from '@/components/Analytics';
 
 export const metadata: Metadata = {
