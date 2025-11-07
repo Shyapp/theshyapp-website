@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface ShyLocation {
   id: string;
@@ -8,223 +8,149 @@ interface ShyLocation {
   state: string;
   lat: number;
   lng: number;
-  activeUsers: number;
-  status: 'active' | 'inactive';
-  type: 'cafe' | 'library' | 'park' | 'gym' | 'coworking' | 'other';
+  status?: 'active' | 'inactive';
 }
 
-// This will eventually fetch from your API: /api/locations
-// For now, using sample data that matches your actual locations
-const INITIAL_LOCATIONS: ShyLocation[] = [
-  // New York
-  { id: 'coffee-corner', name: 'Coffee Corner', city: 'New York', state: 'NY', lat: 40.7589, lng: -73.9851, activeUsers: 8, status: 'active', type: 'cafe' },
-  { id: 'midtown-library', name: 'Midtown Library', city: 'New York', state: 'NY', lat: 40.7549, lng: -73.9840, activeUsers: 12, status: 'active', type: 'library' },
-  { id: 'city-park', name: 'City Park', city: 'New York', state: 'NY', lat: 40.7829, lng: -73.9654, activeUsers: 5, status: 'active', type: 'park' },
-  
-  // More cities (sample data - replace with real API data)
-  { id: 'boston-cafe', name: 'Boston Common Café', city: 'Boston', state: 'MA', lat: 42.3554, lng: -71.0640, activeUsers: 14, status: 'active', type: 'cafe' },
-  { id: 'sf-mission', name: 'Mission Coffee', city: 'San Francisco', state: 'CA', lat: 37.7599, lng: -122.4148, activeUsers: 22, status: 'active', type: 'cafe' },
-  { id: 'la-fitness', name: 'Venice Beach Gym', city: 'Los Angeles', state: 'CA', lat: 33.9850, lng: -118.4695, activeUsers: 18, status: 'active', type: 'gym' },
-  { id: 'chicago-loop', name: 'Loop Library', city: 'Chicago', state: 'IL', lat: 41.8819, lng: -87.6278, activeUsers: 16, status: 'active', type: 'library' },
-  { id: 'austin-downtown', name: 'South Congress Café', city: 'Austin', state: 'TX', lat: 30.2500, lng: -97.7500, activeUsers: 11, status: 'active', type: 'cafe' },
-  { id: 'seattle-cap', name: 'Capitol Hill Coffee', city: 'Seattle', state: 'WA', lat: 47.6205, lng: -122.3212, activeUsers: 9, status: 'active', type: 'cafe' },
-  { id: 'miami-beach', name: 'South Beach Gym', city: 'Miami', state: 'FL', lat: 25.7907, lng: -80.1300, activeUsers: 13, status: 'active', type: 'gym' },
-];
-
 export default function ShyMapEmbed() {
-  const [locations, setLocations] = useState<ShyLocation[]>(INITIAL_LOCATIONS);
-  const [hoveredLocation, setHoveredLocation] = useState<ShyLocation | null>(null);
-  const [totalUsers, setTotalUsers] = useState(0);
-  const mapRef = useRef<HTMLDivElement>(null);
+  const [locations, setLocations] = useState<ShyLocation[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [locationCount, setLocationCount] = useState(0);
 
+  // Fetch real-time locations from local API
   useEffect(() => {
-    // Calculate total active users
-    const total = locations.reduce((sum, loc) => sum + loc.activeUsers, 0);
-    setTotalUsers(total);
-
-    // TODO: Fetch real-time location data from API
-    // fetchLocations();
+    async function fetchLocations() {
+      try {
+        const response = await fetch('/api/locations');
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data)) {
+            setLocations(data);
+            setLocationCount(data.length);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch locations:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
     
-    // Add animation delays to markers
-    const markers = document.querySelectorAll('.location-marker');
-    markers.forEach((marker, i) => {
-      (marker as HTMLElement).style.animationDelay = `${i * 0.1}s`;
-    });
+    fetchLocations();
+    // Refresh locations every 30 seconds
+    const interval = setInterval(fetchLocations, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Send locations to iframe when they're loaded
+  useEffect(() => {
+    if (locations.length > 0) {
+      const iframe = document.querySelector('iframe[title="Shy Locations Map"]') as HTMLIFrameElement;
+      if (iframe && iframe.contentWindow) {
+        // Wait for iframe to load
+        const sendLocations = () => {
+          iframe.contentWindow?.postMessage({
+            type: 'UPDATE_LOCATIONS',
+            locations: locations
+          }, '*');
+        };
+        
+        if (iframe.contentDocument?.readyState === 'complete') {
+          setTimeout(sendLocations, 1000);
+        } else {
+          iframe.addEventListener('load', () => setTimeout(sendLocations, 1000));
+        }
+      }
+    }
   }, [locations]);
-
-  // Convert lat/lng to SVG coordinates (simplified US projection)
-  const latLngToSVG = (lat: number, lng: number) => {
-    // US bounds: lat 24-50, lng -125 to -65
-    const x = ((lng + 125) / 60) * 100; // Convert to 0-100%
-    const y = ((50 - lat) / 26) * 100;   // Invert Y axis, convert to 0-100%
-    return { x, y };
-  };
-
-  const getMarkerSize = (users: number) => {
-    if (users >= 20) return { size: 'w-5 h-5', glow: 'shadow-[0_0_25px_10px_rgba(251,191,36,0.5)]', pulse: 'scale-[2]' };
-    if (users >= 10) return { size: 'w-4 h-4', glow: 'shadow-[0_0_20px_8px_rgba(251,191,36,0.4)]', pulse: 'scale-[1.8]' };
-    return { size: 'w-3 h-3', glow: 'shadow-[0_0_15px_6px_rgba(251,191,36,0.3)]', pulse: 'scale-[1.5]' };
-  };
 
   return (
     <div className="relative w-full max-w-6xl mx-auto">
-      {/* Map Container */}
-      <div 
-        ref={mapRef}
-        className="relative aspect-[16/10] rounded-3xl border border-white/10 bg-gradient-to-br from-black via-zinc-950 to-black overflow-hidden"
-      >
-        {/* Grid overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]" 
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }} 
+      {/* Loading State */}
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm rounded-3xl z-20">
+          <div className="text-center">
+            <div className="inline-block w-12 h-12 border-4 border-yellow-400/30 border-t-yellow-400 rounded-full animate-spin mb-4"></div>
+            <p className="text-white/70">Loading Shy Locations...</p>
+          </div>
+        </div>
+      )}
+
+      {/* Stats Bar */}
+      <div className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+        <div className="flex items-center gap-3">
+          <div className="w-3 h-3 rounded-full bg-yellow-400 animate-pulse shadow-[0_0_15px_3px_rgba(250,204,21,0.6)]"></div>
+          <span className="text-white font-semibold">Live Map</span>
+        </div>
+        <div className="flex items-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-white/50">Locations:</span>
+            <span className="text-yellow-300 font-bold">{locationCount}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-white/50">Coverage:</span>
+            <span className="text-white font-semibold">United States</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Map iframe - cloned from admin dashboard */}
+      <div className="relative aspect-[16/9] rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-yellow-500/10">
+        <iframe
+          title="Shy Locations Map"
+          src="/api/map/html"
+          className="w-full h-full border-0"
+          loading="lazy"
         />
+      </div>
 
-        {/* Ambient glow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/5 via-transparent to-transparent" />
-
-        {/* US Map SVG Silhouette */}
-        <svg
-          viewBox="0 0 960 600"
-          className="absolute inset-0 w-full h-full opacity-[0.12]"
-          fill="none"
-          stroke="rgba(251,191,36,0.25)"
-          strokeWidth="1.5">
-          {/* Simplified US outline - you can replace with actual US map SVG */}
-          <path d="M120 180 L180 140 L260 160 L340 130 L420 150 L500 140 L580 155 L660 145 L740 160 L820 155 L880 180 L880 480 L820 510 L740 530 L660 520 L580 540 L500 530 L420 550 L340 520 L260 500 L180 480 L120 480 Z" 
-            fill="rgba(251,191,36,0.02)"
-          />
-        </svg>
-
-        {/* Location Markers */}
-        {locations.map((location) => {
-          const pos = latLngToSVG(location.lat, location.lng);
-          const markerStyle = getMarkerSize(location.activeUsers);
-          
-          return (
-            <div
-              key={location.id}
-              className="location-marker absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10"
-              style={{ 
-                left: `${pos.x}%`, 
-                top: `${pos.y}%`,
-                animation: 'fadeInMarker 0.6s ease-out forwards',
-                opacity: 0
-              }}
-              onMouseEnter={() => setHoveredLocation(location)}
-              onMouseLeave={() => setHoveredLocation(null)}
-            >
-              {/* Animated pulse glow */}
-              <div
-                className={`absolute inset-0 rounded-full bg-yellow-400 ${markerStyle.glow} animate-pulse-glow pointer-events-none`}
-                style={{ 
-                  filter: 'blur(6px)',
-                  transform: markerStyle.pulse,
-                }}
-              />
-              
-              {/* Core marker dot */}
-              <div
-                className={`relative ${markerStyle.size} rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 ring-2 ring-yellow-400/60 group-hover:scale-125 transition-transform duration-300 z-10`}
-              />
-
-              {/* Ripple on hover */}
-              <div className="absolute inset-0 rounded-full bg-yellow-400/30 scale-0 group-hover:scale-[4] transition-transform duration-700 ease-out pointer-events-none" />
-              
-              {/* Location label (appears on hover) */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                <div className="bg-black/90 backdrop-blur-md border border-yellow-400/50 rounded-lg px-3 py-1.5 shadow-2xl">
-                  <div className="text-yellow-200 font-semibold text-xs">{location.name}</div>
-                  <div className="text-white/60 text-[10px]">{location.activeUsers} active</div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-
-        {/* Stats overlay */}
-        <div className="absolute top-6 left-6 space-y-2 z-20">
-          <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm border border-yellow-400/30 rounded-full px-4 py-2 shadow-lg">
-            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-            <span className="text-yellow-200 text-sm font-semibold">{locations.length} Live Locations</span>
+      {/* Map Legend */}
+      <div className="mt-6 px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-yellow-400 shadow-[0_0_15px_3px_rgba(250,204,21,0.6)]"></div>
+            <span className="text-white/70">Active Shy Location</span>
           </div>
-          <div className="inline-flex items-center gap-2 bg-black/70 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 shadow-lg">
-            <svg className="w-3.5 h-3.5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+          <div className="flex items-center gap-2">
+            <span className="text-white/50">•</span>
+            <span className="text-white/50 text-xs">New locations added daily</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-white/50">•</span>
+            <span className="text-white/50 text-xs">Tap any marker to see details</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="mt-8 text-center">
+        <p className="text-white/60 text-sm mb-4">
+          See someone interesting? Download the app to connect with them at these locations.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://apps.apple.com/app/shy" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition-all duration-300 group"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
             </svg>
-            <span className="text-white/70 text-sm">{totalUsers} Active Users</span>
-          </div>
-        </div>
-
-        {/* Legend */}
-        <div className="absolute bottom-6 right-6 bg-black/70 backdrop-blur-sm border border-white/10 rounded-xl p-4 space-y-2.5 z-20">
-          <div className="text-white/90 font-semibold text-xs mb-3">Activity Level</div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-5 h-5 rounded-full bg-yellow-400 shadow-[0_0_25px_10px_rgba(251,191,36,0.5)]" />
-            <span className="text-white/70 text-xs">High (20+ users)</span>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-4 h-4 rounded-full bg-yellow-400 shadow-[0_0_20px_8px_rgba(251,191,36,0.4)]" />
-            <span className="text-white/70 text-xs">Medium (10-19 users)</span>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-[0_0_15px_6px_rgba(251,191,36,0.3)]" />
-            <span className="text-white/70 text-xs">Active (&lt;10 users)</span>
-          </div>
-        </div>
-
-        {/* Watermark */}
-        <div className="absolute bottom-6 left-6 opacity-40 text-xs text-white/50 z-20">
-          Real-time Shy Location Map
+            <span className="font-semibold">App Store</span>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.shyapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 transition-all duration-300 group"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            </svg>
+            <span className="font-semibold">Google Play</span>
+          </a>
         </div>
       </div>
-
-      {/* Mobile location list */}
-      <div className="mt-8 lg:hidden">
-        <div className="text-center mb-4 text-sm text-white/60">Active in these cities:</div>
-        <div className="flex flex-wrap gap-2 justify-center">
-          {Array.from(new Set(locations.map(l => l.city))).slice(0, 10).map((city) => (
-            <div
-              key={city}
-              className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-white/80 text-xs">{city}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeInMarker {
-          from {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0);
-          }
-          to {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-          }
-        }
-
-        @keyframes pulse-glow {
-          0%, 100% {
-            opacity: 0.3;
-          }
-          50% {
-            opacity: 0.6;
-          }
-        }
-
-        .animate-pulse-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }
