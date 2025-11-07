@@ -418,9 +418,9 @@ export default function ShyLandingPage() {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">Download the App & Create Your Account</h3>
-                    <p className="text-white/70 leading-relaxed">
-                      Download Shy on iOS or Android. Create your profile — just a photo, name, and "About Me." <span className="text-yellow-300">No phone number needed.</span>
+                    <h3 className="text-xl font-bold mb-2">Download Shy on iOS or Android</h3>
+                    <p className="text-white/70 leading-relaxed text-sm">
+                      Set up your profile in seconds — just a photo, name, and short bio. <span className="text-yellow-300">No phone number, no pressure.</span>
                     </p>
                   </div>
                 </div>
@@ -437,11 +437,11 @@ export default function ShyLandingPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-2">Open the Shy Map</h3>
-                    <p className="text-white/70 leading-relaxed mb-3">
-                      Explore verified Shy Locations near you — in your city or across your state.
+                    <p className="text-white/70 leading-relaxed mb-3 text-sm">
+                      Explore live Shy Locations near you — across your city, campus, or state.
                     </p>
                     <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
-                      <p className="text-yellow-200 text-sm font-semibold">🔍 Don't see any? Suggest a spot — we'll activate it within 12 hours.</p>
+                      <p className="text-yellow-200 text-sm">Don't see any? Request one, and we'll activate it within 12 hours.</p>
                     </div>
                   </div>
                 </div>
@@ -461,19 +461,19 @@ export default function ShyLandingPage() {
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>View the Shy Lobby — users currently checked in</span>
+                        <span>Open the Shy Lobby to see who's checked in</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>Tap any profile to see their About Me</span>
+                        <span>Tap any profile to view their About Me</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>Send a chat request <span className="text-yellow-300">(1 token)</span></span>
+                        <span>Send a 1-token chat request to start a convo</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>Create a group chat (only at Shy Locations)</span>
+                        <span>Or create a group chat (only at live locations)</span>
                       </li>
                     </ul>
                   </div>
@@ -494,15 +494,15 @@ export default function ShyLandingPage() {
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
-                        <span>You're connected — like any messaging app</span>
+                        <span>Once connected, chat freely — from anywhere</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
-                        <span>Chat from anywhere, anytime</span>
+                        <span>Rename contacts, mute threads, manage notifications</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
-                        <span>Rename, mute, manage — full control</span>
+                        <span>Just like your favorite messaging app but safer</span>
                       </li>
                     </ul>
                   </div>
@@ -523,11 +523,11 @@ export default function ShyLandingPage() {
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-red-400 mt-0.5">✗</span>
-                        <span>Chat disappears permanently from both phones</span>
+                        <span>Delete a contact, and the chat disappears from both phones</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">↻</span>
-                        <span>To reconnect, meet again at a Shy Location</span>
+                        <span>Want to reconnect? You'll have to meet again at a Shy Location</span>
                       </li>
                     </ul>
                   </div>
@@ -545,9 +545,23 @@ export default function ShyLandingPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-2 text-yellow-200">More Features Coming Soon</h3>
-                    <p className="text-white/70 leading-relaxed text-sm">
-                      We're just getting started — expect <span className="text-yellow-300">smart invites</span>, <span className="text-yellow-300">private events</span>, <span className="text-yellow-300">upgraded groups</span>, and more.
+                    <p className="text-white/70 leading-relaxed text-sm mb-3">
+                      We're just getting started — stay tuned for:
                     </p>
+                    <ul className="space-y-1.5 text-white/70 text-sm">
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-300">•</span>
+                        <span>Phone Calling</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-300">•</span>
+                        <span>Shy Dating - Profile preferences, connection control, and deal breakers</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-yellow-300">•</span>
+                        <span>…and more on the way</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
