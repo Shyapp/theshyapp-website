@@ -5,6 +5,7 @@ import {ShyWordmark} from './ShyLogo';
 import FeaturedLocationsCarousel, {
   type LocationCard,
 } from './FeaturedLocationsCarousel';
+import ShyMapEmbed from './ShyMapEmbed';
 
 // Helper Components
 function StatCard({number, label}: {number: string; label: string}) {
@@ -639,11 +640,21 @@ export default function ShyLandingPage() {
               Explore active Shy Locations
             </h2>
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Each Shy Location is a real place where you can meet real people. 
-              Send a connection request — and build relationships that last beyond the moment.
+              Real-time view of Shy Locations across the United States.
+              This is the same map you'll use in the app — see where people are connecting right now.
             </p>
           </div>
-          <FeaturedLocationsCarousel items={featuredLocations} />
+
+          {/* Live Shy Map */}
+          <ShyMapEmbed />
+
+          {/* Featured Locations Carousel (below map) */}
+          <div className="mt-20">
+            <h3 className="text-2xl md:text-3xl font-bold text-center mb-12">
+              Featured <span className="text-yellow-300">Shy Locations</span>
+            </h3>
+            <FeaturedLocationsCarousel items={featuredLocations} />
+          </div>
         </div>
       </section>
 
