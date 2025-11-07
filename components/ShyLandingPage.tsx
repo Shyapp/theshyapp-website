@@ -652,43 +652,89 @@ export default function ShyLandingPage() {
         className="relative z-10 py-24 md:py-32 border-t border-white/10"
         id="pricing">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Token System</h2>
-              <p className="max-w-2xl text-lg text-white/70 font-normal leading-relaxed">
-                Free members get{' '}
-                <span className="font-semibold text-white">10 tokens</span>{' '}
-                every month to start new conversations. Upgrade to premium
-                for unlimited connections and priority support.
-              </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">Token System</h2>
+            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+              Real connections, not random swipes.<br />
+              Shy uses tokens to make every interaction intentional — no noise, no spam.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Free Plan */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-r from-white/10 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <h3 className="text-2xl font-bold mb-4">Free Plan</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-black tracking-tight">10</div>
+                  <div className="text-white/70 text-sm mt-2">tokens/month — refreshed every 30 days</div>
+                </div>
+                <div className="space-y-3 text-sm text-white/70">
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Perfect for casual users</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-red-400 mt-0.5">✗</span>
+                    <span>Tokens don't roll over — use them before they reset</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2">
-              <Card>
-                <h3 className="text-lg font-semibold">Standard</h3>
-                <div className="mt-3 text-4xl font-black tracking-tight">
-                  10
-                  <span className="ml-2 text-lg font-semibold text-white/70">
-                    tokens
-                  </span>
+
+            {/* Token Packs */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
+                <h3 className="text-2xl font-bold mb-4">Token Packs</h3>
+                <div className="mb-6">
+                  <div className="text-white/90 font-semibold">One-Time Purchase</div>
+                  <div className="text-white/70 text-sm mt-2">Need more without going full premium?</div>
                 </div>
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80">
-                  <Dot /> Resets monthly
+                <div className="space-y-3 text-sm text-white/70">
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Buy a token pack anytime</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Perfect for casual users, first-time chatters, or event-specific needs</span>
+                  </div>
                 </div>
-              </Card>
-              <Card className="border-yellow-500/40 bg-gradient-to-b from-yellow-500/10 to-transparent">
-                <h3 className="text-lg font-semibold text-yellow-300">
-                  Premium
-                </h3>
-                <div className="mt-3 text-4xl font-black tracking-tight text-yellow-300">
-                  $7.99
-                  <span className="ml-2 text-lg font-semibold text-yellow-200/80">
-                    /month
-                  </span>
+              </div>
+            </div>
+
+            {/* Shy Plus - Premium Plan */}
+            <div className="relative group">
+              <div className="absolute -inset-px bg-gradient-to-r from-yellow-400/30 to-yellow-500/20 rounded-2xl opacity-100 group-hover:opacity-100 blur transition-opacity" />
+              <div className="relative bg-gradient-to-br from-yellow-400/10 to-yellow-500/5 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-8 h-full hover:bg-yellow-400/15 transition-all">
+                <div className="inline-flex items-center gap-2 bg-yellow-400/20 border border-yellow-400/40 rounded-full px-3 py-1 mb-4">
+                  <span className="text-yellow-200 text-xs font-bold tracking-wide uppercase">Most Popular</span>
                 </div>
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 text-sm text-yellow-100">
-                  <Dot color="currentColor" /> Unlimited tokens
+                <h3 className="text-2xl font-bold mb-4 text-yellow-200">Shy Plus — Premium Plan</h3>
+                <div className="mb-6">
+                  <div className="text-5xl font-black tracking-tight text-yellow-300">
+                    $19.99
+                    <span className="text-lg font-semibold text-yellow-200/80">/month</span>
+                  </div>
+                  <div className="text-yellow-200/90 font-semibold mt-3">Unlimited tokens</div>
                 </div>
-              </Card>
+                <div className="space-y-3 text-sm text-white/80">
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Best for socially active users</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Frequent venue visitors</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="text-yellow-300 mt-0.5">✓</span>
+                    <span>Community builders</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
