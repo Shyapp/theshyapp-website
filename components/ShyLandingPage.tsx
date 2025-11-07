@@ -561,11 +561,10 @@ export default function ShyLandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Features that <span className="text-yellow-300">empower you</span>
+              Features That <span className="text-yellow-300">Empower You</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Everything you need to connect authentically while maintaining
-              your privacy
+              Everything you need to connect with confidence — and keep full control.
             </p>
           </div>
 
@@ -573,32 +572,32 @@ export default function ShyLandingPage() {
             <FeatureCard
               icon={<MapIcon />}
               title="Verified Shy Locations"
-              description="Only see people at the same location as you, right now. No fake profiles, no catfishing — just real people you can actually meet."
+              description="See and be seen only when you're physically present at the same place. No bots, no catfishing — just real people near you, right now."
             />
             <FeatureCard
               icon={<ChatIcon />}
-              title="Intentional discovery, lasting connections"
-              description="Send a chat request for 1 token when you're at the same location. Once accepted, the connection is yours to keep — message anytime, rename contacts, build real relationships."
+              title="Intentional Discovery, Real Connections"
+              description="Spend a token to send a chat request. If they accept? Boom — you're connected forever. Message anytime, rename contacts, and build something real."
             />
             <FeatureCard
               icon={<ShieldIcon />}
-              title="Privacy-first messaging"
-              description="All chats are encrypted end-to-end. Your connections persist after you leave the location, giving you full control over ongoing conversations."
+              title="Privacy-First Messaging"
+              description="Your chats are end-to-end encrypted. Delete a contact, and the conversation disappears from both devices — instantly."
             />
             <FeatureCard
               icon={<GlobeIcon />}
-              title="Works everywhere"
-              description="Use Shy on your phone, computer, or tablet. Your connections and conversations stay in sync across all your devices."
+              title="Works Wherever You Are"
+              description="Start chatting at the venue, keep the convo going from anywhere. Phone, tablet, or desktop — your Shy chats are always in sync."
             />
             <FeatureCard
               icon={<BellIcon />}
-              title="See who's here, right now"
-              description="Get instant updates when someone new arrives at your location. Never miss the chance to connect with someone interesting nearby."
+              title="See Who's Here — In Real Time"
+              description="When someone new arrives at your location, you'll know. Skip the awkward glances — Shy gives you a discreet heads-up."
             />
             <FeatureCard
               icon={<StarIcon />}
-              title="Unlimited tier perks"
-              description="Upgrade for unlimited tokens, priority support, and exclusive Shy Locations curated for top members."
+              title="Unlimited Tier Perks (Shy Plus)"
+              description="Upgrade to unlock: Unlimited tokens, priority support, and exclusive features to elevate your Shy experience."
             />
           </div>
         </div>
