@@ -6,6 +6,7 @@ import FeaturedLocationsCarousel, {
   type LocationCard,
 } from './FeaturedLocationsCarousel';
 import ShyMapEmbed from './ShyMapEmbed';
+import MobileMenu from './MobileMenu';
 
 // Helper Components
 function StatCard({number, label}: {number: string; label: string}) {
@@ -33,12 +34,12 @@ function FeatureCard({
   return (
     <div className="group relative">
       <div className="absolute -inset-px bg-gradient-to-r from-yellow-400/20 to-purple-500/20 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity" />
-      <div className="relative card p-8 h-full hover:bg-white/10 transition-all">
-        <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400/10 text-yellow-300 ring-1 ring-yellow-400/30 mb-4 group-hover:scale-110 transition-transform">
+      <div className="relative card p-5 sm:p-6 md:p-8 h-full hover:bg-white/10 transition-all">
+        <div className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-yellow-400/10 text-yellow-300 ring-1 ring-yellow-400/30 mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold mb-3">{title}</h3>
-        <p className="text-white/70 leading-relaxed">{description}</p>
+        <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{title}</h3>
+        <p className="text-sm sm:text-base text-white/70 leading-relaxed">{description}</p>
       </div>
     </div>
   );
@@ -214,8 +215,8 @@ export default function ShyLandingPage() {
 
   const navLinks = [
     {label: 'Product', href: '#product'},
-    {label: 'Locations', href: '#locations'},
-    {label: 'Pricing', href: '#pricing'},
+    {label: 'Shy Locations', href: '#locations'},
+    {label: 'Tokens', href: '#pricing'},
     {label: 'Security', href: '#security'},
     {label: 'FAQs', href: '#faqs'},
     {label: 'Contact', href: '#contact'},
@@ -331,40 +332,41 @@ export default function ShyLandingPage() {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <a href="#download" className="btn">
+            <a href="#download" className="btn hidden md:inline-flex">
               Download
             </a>
-            <button className="md:hidden rounded-full border border-white/15 p-2 text-white/70 hover:text-yellow-300">
-              <span className="sr-only">Open menu</span>
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5">
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            <MobileMenu navLinks={navLinks} />
           </div>
         </nav>
       </header>
 
       {/* HERO */}
       <section className="relative z-10 overflow-hidden" id="product">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-32 pt-24 md:pb-40 md:pt-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 pb-24 pt-16 sm:pb-32 sm:pt-24 md:pb-40 md:pt-32">
+          <div className="max-w-3xl mx-auto text-center relative">
+            {/* New Update Badge - Overlaying top of Meet word */}
+            <div className="absolute -top-8 sm:-top-12 md:-top-16 left-1/2 -translate-x-1/2 z-20 w-32 sm:w-40 md:w-48 lg:w-56 animate-bounce-slow">
+              <img 
+                src="/images/newUpdate.png" 
+                alt="New Update" 
+                className="w-full h-auto drop-shadow-2xl"
+                style={{
+                  filter: 'brightness(1.2) saturate(1.3) hue-rotate(-10deg)',
+                }}
+              />
+            </div>
+            
+            <h1 className="text-4xl font-black leading-[1.1] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl relative z-10">
               <span className="block">Meet people nearby.</span>
               <span className="block text-yellow-300 mt-2">
                 Keep the connections that matter.
               </span>
             </h1>
-            <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl font-light text-white/75 leading-relaxed">
+            <p className="mt-6 sm:mt-8 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light text-white/75 leading-relaxed px-2">
               Discover people at verified Shy Locations near you. Send a chat request for 1 token. 
               Once accepted, your connection is permanent — rename contacts, message anytime, build lasting relationships.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
               <a
                 href="shy://location/e8a88b99-6f07-411f-b402-95bb4f0ca7f1"
                 onClick={event =>
@@ -374,10 +376,10 @@ export default function ShyLandingPage() {
                     '/download',
                   )
                 }
-                className="btn">
-                Open Coffee Corner
+                className="btn w-full sm:w-auto min-h-[44px]">
+                Quick Tutorial
               </a>
-              <div id="download" className="flex flex-wrap items-center gap-3">
+              <div id="download" className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
                 <StoreBadge
                   type="apple"
                   onClick={() => trackStoreClick('ios')}
@@ -388,7 +390,7 @@ export default function ShyLandingPage() {
                 />
               </div>
             </div>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60">
+            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm text-white/60 px-4">
               <span>See who's nearby in real-time</span>
               <span>Works on phone and web</span>
               <span>Your privacy is protected</span>
@@ -398,30 +400,32 @@ export default function ShyLandingPage() {
       </section>
 
       {/* HOW IT WORKS - Detailed 6-Step Guide */}
-      <section className="relative z-10 py-32 md:py-40 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+      <section className="relative z-10 py-16 sm:py-24 md:py-32 lg:py-40 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               How Shy Works
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto px-4">
               Six simple steps to meet people nearby
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
             {/* Step 1 */}
             <div className="relative group">
               <div className="absolute -inset-px bg-gradient-to-r from-yellow-400/20 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-xl font-black ring-2 ring-yellow-400/30">
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 md:p-6 hover:bg-white/10 transition-all">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-yellow-400/10 text-yellow-300 text-lg sm:text-xl font-black ring-2 ring-yellow-400/30">
                     1
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">Download Shy on iOS or Android</h3>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">Download Shy on iOS or Android</h3>
                     <p className="text-white/70 leading-relaxed text-sm">
-                      Set up your profile in seconds — just a photo, name, and short bio. <span className="text-yellow-300">No phone number, no pressure.</span>
+                      Set up your profile in seconds. You can change your username, about me description and your photo at anytime.
+                    <p className="text-white/70 leading-relaxed text-sm"></p>  
+                        <span className="text-yellow-300">Make sure your about me description is accurate. No phone number, no pressure.</span>
                     </p>
                   </div>
                 </div>
@@ -439,7 +443,7 @@ export default function ShyLandingPage() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-2">Open the Shy Map</h3>
                     <p className="text-white/70 leading-relaxed mb-3 text-sm">
-                      Explore live Shy Locations near you — across your city, campus, or state.
+                      Explore live Shy Locations near you across your city, campus, or state.
                     </p>
                     <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3">
                       <p className="text-yellow-200 text-sm">Don't see any? Request one, and we'll activate it within 12 hours.</p>
@@ -458,7 +462,7 @@ export default function ShyLandingPage() {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">Visit a Location & Browse the Lobby</h3>
+                    <h3 className="text-xl font-bold mb-2">Go to a Shy location & Browse the Lobby</h3>
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
@@ -466,11 +470,11 @@ export default function ShyLandingPage() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>Tap any profile to view their About Me</span>
+                        <span>See the list of users and About Me descriptions</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
-                        <span>Send a 1-token chat request to start a convo</span>
+                        <span>Send a chat request to start a convo</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">•</span>
@@ -491,15 +495,15 @@ export default function ShyLandingPage() {
                     4
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">Start Chatting — Stay Connected</h3>
+                    <h3 className="text-xl font-bold mb-2">Start Chatting & Stay Connected</h3>
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
-                        <span>Once connected, chat freely — from anywhere</span>
+                        <span>Once connected, chat freely from anywhere</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
-                        <span>Rename contacts, mute threads, manage notifications</span>
+                        <span>Rename contacts, manage notifications</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">✓</span>
@@ -524,7 +528,7 @@ export default function ShyLandingPage() {
                     <ul className="space-y-2 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-red-400 mt-0.5">✗</span>
-                        <span>Delete a contact, and the chat disappears from both phones</span>
+                        <span>Delete a contact, and the chat and contact disappears from both phones</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300 mt-0.5">↻</span>
@@ -547,12 +551,12 @@ export default function ShyLandingPage() {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-2 text-yellow-200">More Features Coming Soon</h3>
                     <p className="text-white/70 leading-relaxed text-sm mb-3">
-                      We're just getting started — stay tuned for:
+                      We're just getting started, stay tuned for:
                     </p>
                     <ul className="space-y-1.5 text-white/70 text-sm">
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300">•</span>
-                        <span>Phone Calling</span>
+                        <span>Voice  Calling</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-yellow-300">•</span>
@@ -572,47 +576,47 @@ export default function ShyLandingPage() {
       </section>
 
       {/* FEATURES SHOWCASE */}
-      <section className="relative z-10 py-32 md:py-40 border-y border-white/10" id="features">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+      <section className="relative z-10 py-16 sm:py-24 md:py-32 lg:py-40 border-y border-white/10" id="features">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Features That <span className="text-yellow-300">Empower You</span>
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-              Everything you need to connect with confidence — and keep full control.
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto px-4">
+              Everything you need to connect with confidence and keep full control.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             <FeatureCard
               icon={<MapIcon />}
               title="Verified Shy Locations"
-              description="See and be seen only when you're physically present at the same place. No bots, no catfishing — just real people near you, right now."
+              description="See and be seen only when you're physically present at the same place. No bots, no catfishing, just real people near you, right now."
             />
             <FeatureCard
               icon={<ChatIcon />}
-              title="Intentional Discovery, Real Connections"
-              description="Spend a token to send a chat request. If they accept? Boom — you're connected forever. Message anytime, rename contacts, and build something real."
+              title="Real Connections"
+              description="Send a chat request. If they accept? Boom — you're connected forever. Message anytime, rename contacts, and build something real."
             />
             <FeatureCard
               icon={<ShieldIcon />}
-              title="Privacy-First Messaging"
-              description="Your chats are end-to-end encrypted. Delete a contact, and the conversation disappears from both devices — instantly."
+              title="Mutal Contact Clear"
+              description="Delete a contact, and the contact and conversation disappears from both devices instantly."
             />
             <FeatureCard
               icon={<GlobeIcon />}
               title="Works Wherever You Are"
-              description="Start chatting at the venue, keep the convo going from anywhere. Phone, tablet, or desktop — your Shy chats are always in sync."
+              description="Start chatting at the venue, keep the convo going from anywhere. Phone, tablet, or desktop. Your Shy chats are always in sync."
             />
             <FeatureCard
               icon={<BellIcon />}
-              title="See Who's Here — In Real Time"
-              description="When someone new arrives at your location, you'll know. Skip the awkward glances — Shy gives you a discreet heads-up."
+              title="See Who's Here, In Real Time"
+              description="The moment someone new arrives at your Shy location, you'll know. Skip the awkward glances. Send a chat request discreetly."
             />
             <FeatureCard
               icon={<StarIcon />}
-              title="Unlimited Tier Perks (Shy Plus)"
-              description="Upgrade to unlock: Unlimited tokens, priority support, and exclusive features to elevate your Shy experience."
+              title="Token Packs & Unlimited tokens (Shy Plus)"
+              description="Subscribe to unlock: Unlimited tokens. Buy tokens packs that fit your social activity."
             />
           </div>
         </div>
@@ -623,9 +627,9 @@ export default function ShyLandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <StatCard number="Real" label="People at your location" />
-            <StatCard number="1 token" label="To start a conversation" />
-            <StatCard number="0 leaks" label="Personal data shared" />
-            <StatCard number="45+" label="Cities with Shy Locations" />
+            <StatCard number="No Bots" label="No fake accounts" />
+            <StatCard number="Secure" label="No personal data shared" />
+            <StatCard number="23+" label="Cities with Shy Locations" />
           </div>
         </div>
       </section>
@@ -641,7 +645,7 @@ export default function ShyLandingPage() {
             </h2>
             <p className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
               Real-time view of Shy Locations across the United States.
-              This is the same map you'll use in the app — see where people are connecting right now.
+              This is the same map you'll use in the app. See where people are connecting.
             </p>
           </div>
 
@@ -660,18 +664,18 @@ export default function ShyLandingPage() {
 
       {/* TOKEN SYSTEM */}
       <section
-        className="relative z-10 py-24 md:py-32 border-t border-white/10"
+        className="relative z-10 py-16 sm:py-20 md:py-24 lg:py-32 border-t border-white/10"
         id="pricing">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">Token System</h2>
-            <p className="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
-              Real connections, not random swipes.<br />
-              Shy uses tokens to make every interaction intentional — no noise, no spam.
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">Token System</h2>
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto px-4">
+              Real connections, not random swipes.<br className="hidden sm:block" />
+              <span className="block sm:inline"> Shy uses tokens to make every interaction intentional. No noise, No spam.</span>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             {/* Free Plan */}
             <div className="relative group">
               <div className="absolute -inset-px bg-gradient-to-r from-white/10 to-white/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -688,7 +692,7 @@ export default function ShyLandingPage() {
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-red-400 mt-0.5">✗</span>
-                    <span>Tokens don't roll over — use them before they reset</span>
+                    <span>Tokens don't roll over, use them before they reset</span>
                   </div>
                 </div>
               </div>
@@ -710,7 +714,7 @@ export default function ShyLandingPage() {
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-yellow-300 mt-0.5">✓</span>
-                    <span>Perfect for casual users, first-time chatters, or event-specific needs</span>
+                    <span>Perfect for casual users, first-time chatters, or travelers</span>
                   </div>
                 </div>
               </div>
@@ -723,7 +727,7 @@ export default function ShyLandingPage() {
                 <div className="inline-flex items-center gap-2 bg-yellow-400/20 border border-yellow-400/40 rounded-full px-3 py-1 mb-4">
                   <span className="text-yellow-200 text-xs font-bold tracking-wide uppercase">Most Popular</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-yellow-200">Shy Plus — Premium Plan</h3>
+                <h3 className="text-2xl font-bold mb-4 text-yellow-200">Shy Plus — Subscription</h3>
                 <div className="mb-6">
                   <div className="text-5xl font-black tracking-tight text-yellow-300">
                     $19.99

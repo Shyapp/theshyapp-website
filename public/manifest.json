@@ -1,0 +1,40 @@
+{
+  "name": "Shy App - Meet People Nearby",
+  "short_name": "Shy App",
+  "description": "Connect with real people at verified Shy Locations near you",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0E13",
+  "theme_color": "#0B0E13",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/shyLogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/shyLogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["social", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.shyapp",
+      "id": "com.shyapp"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/us/app/shy/id6444877711"
+    }
+  ]
+}
