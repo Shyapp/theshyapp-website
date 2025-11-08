@@ -100,7 +100,7 @@ export async function GET() {
               console.log('Creating map instance...');
               map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 39.8283, lng: -98.5795}, // Geographic center of United States
-                zoom: 5, 
+                zoom: 4, // Zoomed to show from Canada to Guatemala cutoff
               disableDefaultUI: true,
               zoomControl: false,
               mapTypeControl: false,
@@ -385,47 +385,48 @@ export async function GET() {
                     map: map,
                     icon: {
                       url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(\`
-                        <svg width="\${isShyHQ ? '36' : '30'}" height="\${isShyHQ ? '36' : '30'}" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="\${isShyHQ ? '20' : '16'}" height="\${isShyHQ ? '20' : '16'}" xmlns="http://www.w3.org/2000/svg">
                           <defs>
                             <radialGradient id="grad-\${loc.id}" cx="50%" cy="50%" r="50%">
-                              <stop offset="0%" style="stop-color:\${isOnline ? (isShyHQ ? '#FFD700' : '#FACC15') : '#ef4444'};stop-opacity:1" />
-                              <stop offset="40%" style="stop-color:\${isOnline ? (isShyHQ ? '#FFA500' : '#FACC15') : '#dc2626'};stop-opacity:0.9" />
-                              <stop offset="70%" style="stop-color:\${isOnline ? (isShyHQ ? '#FF6347' : '#F59E0B') : '#b91c1c'};stop-opacity:0.5" />
+                              <stop offset="0%" style="stop-color:\${isOnline ? (isShyHQ ? '#FFD700' : '#FACC15') : '#ef4444'};stop-opacity:0.95" />
+                              <stop offset="50%" style="stop-color:\${isOnline ? (isShyHQ ? '#FFA500' : '#FACC15') : '#dc2626'};stop-opacity:0.6" />
                               <stop offset="100%" style="stop-color:\${isOnline ? (isShyHQ ? '#FF6347' : '#F59E0B') : '#b91c1c'};stop-opacity:0" />
                             </radialGradient>
                             <filter id="glow-\${loc.id}">
-                              <feGaussianBlur stdDeviation="\${isShyHQ ? '4' : '3'}" result="coloredBlur"/>
+                              <feGaussianBlur stdDeviation="\${isShyHQ ? '1.5' : '1.2'}" result="coloredBlur"/>
                               <feMerge>
                                 <feMergeNode in="coloredBlur"/>
                                 <feMergeNode in="SourceGraphic"/>
                               </feMerge>
                             </filter>
                           </defs>
-                          <!-- Main pulsing glow for online locations only -->
-                          \${isOnline ? \`<circle cx="\${isShyHQ ? '18' : '15'}" cy="\${isShyHQ ? '18' : '15'}" r="\${isShyHQ ? '14' : '12'}" 
-                                  fill="url(#grad-\${loc.id})" filter="url(#glow-\${loc.id})" opacity="0.6">
+                          <!-- Subtle pulsing outer glow (Rolls Royce style) -->
+                          \${isOnline ? \`<circle cx="\${isShyHQ ? '10' : '8'}" cy="\${isShyHQ ? '10' : '8'}" r="\${isShyHQ ? '7' : '6'}" 
+                                  fill="url(#grad-\${loc.id})" filter="url(#glow-\${loc.id})" opacity="0.3">
                             <animate attributeName="r" 
-                                     values="\${isShyHQ ? '14;18;14' : '12;16;12'}" 
+                                     values="\${isShyHQ ? '7;9;7' : '6;8;6'}" 
                                      dur="\${randomDuration}s" 
                                      begin="\${randomDelay}s"
                                      repeatCount="indefinite"/>
                             <animate attributeName="opacity" 
-                                     values="0.6;1;0.6" 
+                                     values="0.3;0.6;0.3" 
                                      dur="\${randomDuration}s" 
                                      begin="\${randomDelay}s"
                                      repeatCount="indefinite"/>
                           </circle>\` : ''}
-                          <!-- Core glow -->
-                          <circle cx="\${isShyHQ ? '18' : '15'}" cy="\${isShyHQ ? '18' : '15'}" r="\${isShyHQ ? '10' : '8'}" 
-                                  fill="url(#grad-\${loc.id})" filter="url(#glow-\${loc.id})"/>
-                          <!-- Solid center -->
-                          <circle cx="\${isShyHQ ? '18' : '15'}" cy="\${isShyHQ ? '18' : '15'}" r="\${isShyHQ ? '6' : '4'}" 
+                          <!-- Delicate inner glow -->
+                          <circle cx="\${isShyHQ ? '10' : '8'}" cy="\${isShyHQ ? '10' : '8'}" r="\${isShyHQ ? '4' : '3.5'}" 
+                                  fill="url(#grad-\${loc.id})" filter="url(#glow-\${loc.id})" opacity="0.7"/>
+                          <!-- Bright star center (like Rolls Royce fiber optic stars) -->
+                          <circle cx="\${isShyHQ ? '10' : '8'}" cy="\${isShyHQ ? '10' : '8'}" r="\${isShyHQ ? '2.5' : '2'}" 
                                   fill="\${isOnline ? (isShyHQ ? '#FFD700' : '#FACC15') : '#ef4444'}"/>
-                          \${isShyHQ ? '<circle cx="18" cy="18" r="2" fill="#FFF" opacity="0.9"/>' : ''}
+                          <!-- Tiny bright point in center -->
+                          <circle cx="\${isShyHQ ? '10' : '8'}" cy="\${isShyHQ ? '10' : '8'}" r="\${isShyHQ ? '1' : '0.8'}" 
+                                  fill="#FFF" opacity="\${isShyHQ ? '1' : '0.95'}"/>
                         </svg>
                       \`),
-                      scaledSize: new google.maps.Size(isShyHQ ? 36 : 30, isShyHQ ? 36 : 30),
-                      anchor: new google.maps.Point(isShyHQ ? 18 : 15, isShyHQ ? 18 : 15)
+                      scaledSize: new google.maps.Size(isShyHQ ? 20 : 16, isShyHQ ? 20 : 16),
+                      anchor: new google.maps.Point(isShyHQ ? 10 : 8, isShyHQ ? 10 : 8)
                     },
                     title: loc.name,
                     animation: null // Remove bouncing animation from Shy HQ
@@ -606,25 +607,10 @@ export async function GET() {
                 }
               });
               
-              // On initial load, default to show all locations
-              if (hasLocations && !bounds.isEmpty()) {
-                // Set bounds to show all locations instead of centering on Shy HQ
-                try {
-                  map.fitBounds(bounds, {
-                    padding: { top: 50, right: 50, bottom: 50, left: 50 },
-                    maxZoom: 14
-                  });
-                } catch (e) {
-                  console.warn('Error fitting bounds:', e);
-                  // Fallback to Shy HQ center
-                  map.setCenter({lat: 47.923003, lng: -97.036164});
-                  map.setZoom(12);
-                }
-              } else {
-                // Fallback to Shy HQ center
-                map.setCenter({lat: 47.923003, lng: -97.036164});
-                map.setZoom(12);
-              }
+              // Marketing map: Keep default Americas view (don't auto-fit to all locations)
+              // The map stays at the initial center (39.8283, -98.5795) and zoom (3)
+              // This ensures Mexico, US, and Canada are always visible regardless of marker locations
+              
             }).catch(console.error);
           }
           
@@ -659,36 +645,11 @@ export async function GET() {
             });
           }, 2000);
           
-          // Show all locations function - fit bounds but keep reasonable zoom
+          // Reset View function - return to default Americas view
           function revertToLocations() {
-            if (markers.length > 0) {
-              const bounds = new google.maps.LatLngBounds();
-              let locationCount = 0;
-              
-              // Add all location positions to bounds
-              markers.forEach(marker => {
-                if (marker.getPosition) {
-                  bounds.extend(marker.getPosition());
-                  locationCount++;
-                }
-              });
-              
-              if (locationCount > 0) {
-                // Fit bounds to show all locations
-                map.fitBounds(bounds);
-                
-                // Ensure reasonable zoom levels
-                google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
-                  const zoom = map.getZoom();
-                  if (zoom > 14) map.setZoom(14); // Don't zoom too close
-                  if (zoom < 2) map.setZoom(2);   // Don't zoom too far out
-                });
-              }
-            } else {
-              // Default to Shy HQ if no locations
-              map.setCenter({lat: 47.923003, lng: -97.036164});
-              map.setZoom(12);
-            }
+            // Always reset to Americas view (center on US, show down to Guatemala)
+            map.setCenter({lat: 39.8283, lng: -98.5795});
+            map.setZoom(4);
           }
           
           // Ensure map initializes even if callback doesn't work
