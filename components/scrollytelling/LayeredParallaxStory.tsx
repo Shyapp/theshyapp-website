@@ -127,32 +127,20 @@ export default function LayeredParallaxStory({
       });
 
       if (!prefersReducedMotion) {
-        // Animate each layer with cinematic motion
-        config.layers.forEach((layerConfig) => {
+        // Sequential reveal - each layer shows one after another, never overlapping
+        const totalLayers = config.layers.length;
+        
+        config.layers.forEach((layerConfig, index) => {
           const layer = layersRef.current.get(layerConfig.num);
           if (!layer) return;
 
-          // Start position (before scroll)
-          const startProps = {
-            x: 0,
-            y: 0,
-            opacity: 0,
-            scale: 0.8,
-            rotation: 0,
-          };
+          // Calculate when this layer should appear (divided into segments)
+          const segmentDuration = height / totalLayers;
+          const startPercent = (index / totalLayers) * 100;
+          const endPercent = ((index + 1) / totalLayers) * 100;
+          const fadeOutPercent = endPercent + 5; // Fade out quickly after
 
-          // End position (after scroll) - use config values
-          const endProps = {
-            x: layerConfig.x,
-            y: layerConfig.y,
-            opacity: layerConfig.opacity,
-            scale: layerConfig.scale,
-            rotation: layerConfig.rotation,
-            ease: 'power2.out',
-          };
-
-          gsap.fromTo(layer, startProps, {
-            ...endProps,
+          const timeline = gsap.timeline({
             scrollTrigger: {
               trigger: rootRef.current,
               start: 'top top',
@@ -160,6 +148,38 @@ export default function LayeredParallaxStory({
               scrub: 1,
             },
           });
+
+          // Phase 1: Hidden before its turn
+          timeline.set(layer, { 
+            opacity: 0, 
+            x: 0, 
+            y: 0, 
+            scale: 0.8, 
+            rotation: 0 
+          }, 0);
+
+          // Phase 2: Fade IN and animate (only during its segment)
+          timeline.to(layer, {
+            opacity: 1,
+            x: layerConfig.x,
+            y: layerConfig.y,
+            scale: layerConfig.scale,
+            rotation: layerConfig.rotation,
+            ease: 'power2.out',
+            duration: 0.3,
+          }, startPercent / 100);
+
+          // Phase 3: Hold visible
+          timeline.to(layer, {
+            opacity: 1,
+            duration: 0.4,
+          }, (startPercent + 30) / 100);
+
+          // Phase 4: Fade OUT before next layer appears
+          timeline.to(layer, {
+            opacity: 0,
+            duration: 0.2,
+          }, (endPercent - 5) / 100);
         });
 
         // Content fade
