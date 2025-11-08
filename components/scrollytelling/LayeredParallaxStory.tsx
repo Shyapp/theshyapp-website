@@ -202,41 +202,68 @@ export default function LayeredParallaxStory({
     return () => ctx.revert();
   }, [sceneName, height, config]);
 
+  // Calculate collage grid layout positions
+  const getCollagePosition = (index: number, total: number) => {
+    const cols = Math.ceil(Math.sqrt(total));
+    const rows = Math.ceil(total / cols);
+    const col = index % cols;
+    const row = Math.floor(index / cols);
+    
+    // Calculate position with some randomness for organic feel
+    const baseLeft = (col / cols) * 100;
+    const baseTop = (row / rows) * 100;
+    const randomOffsetX = (Math.random() - 0.5) * 5; // Small random offset
+    const randomOffsetY = (Math.random() - 0.5) * 5;
+    
+    return {
+      left: `${baseLeft + randomOffsetX}%`,
+      top: `${baseTop + randomOffsetY}%`,
+      width: `${100 / cols - 2}%`, // 2% gap between images
+      height: `${100 / rows - 2}%`,
+    };
+  };
+
   return (
     <div 
       ref={rootRef}
       className="relative w-full h-screen overflow-hidden bg-black"
     >
-      {/* Background layers */}
-      <div className="absolute inset-0">
-        {config.layers.map((layerConfig, index) => (
-          <div
-            key={layerConfig.num}
-            ref={(el) => {
-              if (el) layersRef.current.set(layerConfig.num, el);
-            }}
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: index }}
-          >
-            <img
-              src={`/story/layers/layer${layerConfig.num}.png`}
-              alt={`Layer ${layerConfig.num}`}
-              className="w-full h-full object-cover"
-              loading={index < 3 ? 'eager' : 'lazy'}
-            />
-          </div>
-        ))}
+      {/* Collage grid - all images visible at once */}
+      <div className="absolute inset-0 p-4">
+        {config.layers.map((layerConfig, index) => {
+          const position = getCollagePosition(index, config.layers.length);
+          
+          return (
+            <div
+              key={layerConfig.num}
+              ref={(el) => {
+                if (el) layersRef.current.set(layerConfig.num, el);
+              }}
+              className="absolute"
+              style={{ 
+                left: position.left,
+                top: position.top,
+                width: position.width,
+                height: position.height,
+              }}
+            >
+              <img
+                src={`/story/layers/layer${layerConfig.num}.png`}
+                alt={`Layer ${layerConfig.num}`}
+                className="w-full h-full object-cover rounded-lg shadow-2xl"
+                loading={index < 3 ? 'eager' : 'lazy'}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Content overlay */}
-      <div className="parallax-content relative z-50 flex items-center justify-center h-full px-6">
+      <div className="parallax-content relative z-50 flex items-center justify-center h-full px-6 bg-black/50 backdrop-blur-sm">
         <div className="max-w-4xl text-center">
           {children}
         </div>
       </div>
-
-      {/* Dark vignette */}
-      <div className="absolute inset-0 pointer-events-none z-40 bg-gradient-radial from-transparent via-transparent to-black/60" />
     </div>
   );
 }
