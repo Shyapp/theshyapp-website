@@ -7,31 +7,88 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Scene configurations - only load specific layers for each scene for better performance
+// CINEMATIC FOCUS PULL EFFECT - Each scene has unique dramatic motion
 const SCENE_CONFIGS = {
+  // Scene 1: Wide Shot - Far background barely moves, foreground fast = PARALLAX DEPTH
   discovery: { 
-    layers: [2, 3, 4, 5, 8, 9, 13, 15],
-    speeds: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    layers: [
+      { num: 2, x: 0, y: -20, scale: 1, opacity: 1, rotation: 0 },      // Far back - almost static
+      { num: 3, x: 50, y: -40, scale: 1.05, opacity: 1, rotation: 0 },  // Slow pan right
+      { num: 5, x: 100, y: -60, scale: 1.1, opacity: 1, rotation: 0 },  
+      { num: 8, x: -150, y: -80, scale: 1.15, opacity: 1, rotation: 0 }, // Foreground - fast left
+      { num: 9, x: -200, y: -100, scale: 1.2, opacity: 1, rotation: 0 },
+      { num: 13, x: -250, y: -120, scale: 1.25, opacity: 1, rotation: 0 },
+      { num: 15, x: -300, y: -140, scale: 1.3, opacity: 1, rotation: 0 },
+    ]
   },
+  
+  // Scene 2: ZOOM IN - Layers scale up dramatically toward camera
   venue: { 
-    layers: [16, 17, 18, 19, 20, 22, 24, 26, 28, 30],
-    speeds: [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
+    layers: [
+      { num: 16, x: 0, y: 0, scale: 1.8, opacity: 1, rotation: 0 },     // Zoom forward
+      { num: 18, x: 0, y: 0, scale: 1.9, opacity: 1, rotation: 0 },
+      { num: 20, x: 0, y: 0, scale: 2.0, opacity: 1, rotation: 0 },
+      { num: 22, x: 0, y: -50, scale: 2.1, opacity: 1, rotation: 0 },   // Coming at you
+      { num: 24, x: 0, y: -80, scale: 2.3, opacity: 1, rotation: 0 },
+      { num: 26, x: 0, y: -100, scale: 2.5, opacity: 1, rotation: 0 },  // BOOM close
+      { num: 28, x: 0, y: -120, scale: 2.7, opacity: 1, rotation: 0 },
+      { num: 30, x: 0, y: -150, scale: 3.0, opacity: 1, rotation: 0 },  // Closest
+    ]
   },
+  
+  // Scene 3: SLIDE IN - Characters enter from left AND right
   arrival: { 
-    layers: [31, 33, 35, 37, 39, 41, 43, 45],
-    speeds: [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1]
+    layers: [
+      { num: 31, x: -400, y: 0, scale: 1.2, opacity: 1, rotation: -5 },  // From left
+      { num: 33, x: -300, y: 0, scale: 1.3, opacity: 1, rotation: -3 },
+      { num: 35, x: -200, y: 0, scale: 1.4, opacity: 1, rotation: 0 },
+      { num: 37, x: 400, y: 0, scale: 1.2, opacity: 1, rotation: 5 },    // From right
+      { num: 39, x: 300, y: 0, scale: 1.3, opacity: 1, rotation: 3 },
+      { num: 41, x: 200, y: 0, scale: 1.4, opacity: 1, rotation: 0 },
+      { num: 43, x: 0, y: 0, scale: 1.5, opacity: 1, rotation: 0 },      // Center meet
+      { num: 45, x: 0, y: 0, scale: 1.6, opacity: 1, rotation: 0 },
+    ]
   },
+  
+  // Scene 4: POP & SPIN - UI elements burst forward with rotation
   connect: { 
-    layers: [46, 48, 50, 52, 54, 56, 58, 60],
-    speeds: [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
+    layers: [
+      { num: 46, x: 0, y: 0, scale: 2.0, opacity: 1, rotation: 360 },    // Spin in
+      { num: 48, x: 0, y: 0, scale: 2.2, opacity: 1, rotation: -360 },
+      { num: 50, x: 0, y: -50, scale: 2.4, opacity: 1, rotation: 180 },
+      { num: 52, x: 0, y: -80, scale: 2.6, opacity: 1, rotation: -180 },
+      { num: 54, x: 0, y: -100, scale: 2.8, opacity: 1, rotation: 90 },
+      { num: 56, x: 0, y: -120, scale: 3.0, opacity: 1, rotation: -90 },
+      { num: 58, x: 0, y: -150, scale: 3.2, opacity: 1, rotation: 45 },
+      { num: 60, x: 0, y: -180, scale: 3.5, opacity: 1, rotation: 0 },   // Final pop
+    ]
   },
+  
+  // Scene 5: FLOAT UP - Messages rise like bubbles
   converse: { 
-    layers: [61, 63, 65, 67, 69, 71, 73, 75],
-    speeds: [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3]
+    layers: [
+      { num: 61, x: -50, y: -300, scale: 1.3, opacity: 1, rotation: 0 },
+      { num: 63, x: 50, y: -350, scale: 1.4, opacity: 1, rotation: 0 },
+      { num: 65, x: -30, y: -400, scale: 1.5, opacity: 1, rotation: 0 },
+      { num: 67, x: 30, y: -450, scale: 1.6, opacity: 1, rotation: 0 },
+      { num: 69, x: 0, y: -500, scale: 1.7, opacity: 1, rotation: 0 },
+      { num: 71, x: 0, y: -550, scale: 1.8, opacity: 1, rotation: 0 },
+      { num: 73, x: 0, y: -600, scale: 1.9, opacity: 1, rotation: 0 },
+      { num: 75, x: 0, y: -650, scale: 2.0, opacity: 1, rotation: 0 },
+    ]
   },
+  
+  // Scene 6: EXPLODE - Everything bursts forward together (starburst)
   community: { 
-    layers: [76, 78, 80, 82, 84, 86, 88],
-    speeds: [0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3]
+    layers: [
+      { num: 76, x: 0, y: 0, scale: 4.0, opacity: 1, rotation: 0 },
+      { num: 78, x: 0, y: 0, scale: 4.2, opacity: 1, rotation: 0 },
+      { num: 80, x: 0, y: 0, scale: 4.5, opacity: 1, rotation: 0 },
+      { num: 82, x: 0, y: 0, scale: 5.0, opacity: 1, rotation: 0 },
+      { num: 84, x: 0, y: 0, scale: 5.5, opacity: 1, rotation: 0 },
+      { num: 86, x: 0, y: 0, scale: 6.0, opacity: 1, rotation: 0 },
+      { num: 88, x: 0, y: 0, scale: 7.0, opacity: 1, rotation: 0 },    // MASSIVE
+    ]
   },
 };
 
@@ -70,33 +127,39 @@ export default function LayeredParallaxStory({
       });
 
       if (!prefersReducedMotion) {
-        // Animate each layer with its own speed
-        config.layers.forEach((layerNum, index) => {
-          const layer = layersRef.current.get(layerNum);
+        // Animate each layer with cinematic motion
+        config.layers.forEach((layerConfig) => {
+          const layer = layersRef.current.get(layerConfig.num);
           if (!layer) return;
 
-          const speed = config.speeds[index] || 1;
-          const yMove = -100 * speed;
+          // Start position (before scroll)
+          const startProps = {
+            x: 0,
+            y: 0,
+            opacity: 0,
+            scale: 0.8,
+            rotation: 0,
+          };
 
-          gsap.fromTo(layer,
-            { 
-              y: 0,
-              opacity: 0,
-              scale: 0.95 
+          // End position (after scroll) - use config values
+          const endProps = {
+            x: layerConfig.x,
+            y: layerConfig.y,
+            opacity: layerConfig.opacity,
+            scale: layerConfig.scale,
+            rotation: layerConfig.rotation,
+            ease: 'power2.out',
+          };
+
+          gsap.fromTo(layer, startProps, {
+            ...endProps,
+            scrollTrigger: {
+              trigger: rootRef.current,
+              start: 'top top',
+              end: `+=${height}%`,
+              scrub: 1,
             },
-            {
-              y: yMove,
-              opacity: 1,
-              scale: 1 + (speed * 0.05),
-              ease: 'none',
-              scrollTrigger: {
-                trigger: rootRef.current,
-                start: 'top top',
-                end: `+=${height}%`,
-                scrub: 1,
-              },
-            }
-          );
+          });
         });
 
         // Content fade
@@ -126,18 +189,18 @@ export default function LayeredParallaxStory({
     >
       {/* Background layers */}
       <div className="absolute inset-0">
-        {config.layers.map((layerNum, index) => (
+        {config.layers.map((layerConfig, index) => (
           <div
-            key={layerNum}
+            key={layerConfig.num}
             ref={(el) => {
-              if (el) layersRef.current.set(layerNum, el);
+              if (el) layersRef.current.set(layerConfig.num, el);
             }}
             className="absolute inset-0 w-full h-full"
             style={{ zIndex: index }}
           >
             <img
-              src={`/story/layers/layer${layerNum}.png`}
-              alt={`Layer ${layerNum}`}
+              src={`/story/layers/layer${layerConfig.num}.png`}
+              alt={`Layer ${layerConfig.num}`}
               className="w-full h-full object-cover"
               loading={index < 3 ? 'eager' : 'lazy'}
             />
